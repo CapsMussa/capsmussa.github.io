@@ -12,6 +12,10 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?        family=Lato:wght@400;700&display=swap"
+          rel="stylesheet">
     <title>Materials</title>
     <style>
         #color-text {
@@ -22,13 +26,13 @@
         }
     </style>
     <style>
-        .text-container h1{
+        .text-container h1 {
             margin: 0;
             font-size: 150px;
-            color: rgba(225,225,225, .01);
+            color: rgba(225, 225, 225, .01);
             background-image: url("https://i.pinimg.com/originals/94/d2/f0/94d2f05d8836d1f2f62910b6a1b018e4.jpg");
             background-repeat: repeat;
-            -webkit-background-clip:text;
+            -webkit-background-clip: text;
             animation: animate 15s ease-in-out infinite;
             text-align: center;
             text-transform: uppercase;
@@ -39,7 +43,7 @@
             0%, 100% {
                 background-position: left top;
             }
-            25%{
+            25% {
                 background-position: right bottom;
             }
             50% {
@@ -51,15 +55,18 @@
         }
     </style>
 
+
 </head>
+
 <body>
+
 <div class="container">
     <header
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link" id="color-text">Новсти</a></li>
-            <li><a href="/all.html" class="nav-link" id="color-text">Все курсы </a></li>
+            <li><a href="all.html" class="nav-link" id="color-text">Все курсы </a></li>
         </ul>
 
         <div class="col-md-3 text-end">
@@ -69,22 +76,30 @@
     </header>
 </div>
 
-<!-- <div class="container px-4 py-5 mt-5 border-bottom mb-5 p-5 shadow"
+<!-- <div class="container px-4 py-5 mt-5 border-bottom mb-5 p-5 shadow border"
      style="border-radius: 36px; width: 100%; height: 615px; background-image: url('стройка2.png'); opacity: .85">
+
+     Наша система адаптируется под ваши потребности, предоставляя гибкость и оперативность
 </div> -->
 
-<div class="container px-4 align-items-start w-100" style="" id="featured-3">
-    <h1 class="mb-3 p-3 w-75 display-3 fw-bold"
-        style="color:#333; text-align: left; margin-top: 40px; font-size: 4.6rem; line-height: 4.2rem; font-family: 'Arial Black';">Пройди курс
+<div class="container px-5 align-items-start w-100" style="" id="featured-3">
+    <h1 class="mb-2 p-3 w-75 display-3 fw-bold"
+        style="color:#333; text-align: left; margin-top: 120px; font-size: 4.6rem; line-height: 4.2rem; font-family: 'Arial Black';">
+        Пройди курс
         обучения на рабочую профессию с нуля
     </h1>
-
+    <span class="p-3" style="
+font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+">
+        Программа разработана с учетом знаний и навыков студентов, окончивших среднюю школу</span>
 </div>
 
-<div class="container shadow" style="margin-top:50px; border-radius:16px;">
+<div class="container shadow border" style="margin-top:30px; border-radius:16px;">
     <div class="row g-4 py-3 row-cols-1 align-items-center row-cols-3">
         <div class="w-75 mb-1 px-5">
-            <a href="all.html" class="fs-5 btn btn-dark m-1">Все курсы</a>
+            <a href="/all.html" class="fs-5 btn btn-dark m-1">Все курсы</a>
             <button type="button" class="fs-5 btn btn-outline-dark m-1">Рабочие специальности</button>
             <button type="button" class="fs-5 btn btn-outline-dark m-1">Проф. переподготовка</button>
             <button type="button" class="fs-5 btn btn-outline-dark m-1">Допуски к работе</button>
@@ -96,7 +111,6 @@
         </div>
     </div>
 </div>
-
 
 
 <div class="container" style="margin-top:50px;">
@@ -187,29 +201,42 @@
     <div class="accordion accordion-flush w-50" id="accordionFlushExample">
         <div class="accordion-item">
             <h1 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
+                        style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
                     Индивидуальный подход к каждому ученику
                 </button>
             </h1>
             <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body" style="color: #333; line-height: 20px; font-size: 18px; font-family: 'Arial Black';">Способность регулировать темп обучения. Адаптация учебного материала. Индивидуальные консультации. Проектная деятельность. Учёт темпа обучения. Поддержка и мотивация. Использование технологий. Создание комфортной атмосферы.</div>
+                <div class="accordion-body"
+                     style="color: #333; line-height: 20px; font-size: 18px; font-family: 'Arial Black';">Способность
+                    регулировать темп обучения. Адаптация учебного материала. Индивидуальные консультации. Проектная
+                    деятельность. Учёт темпа обучения. Поддержка и мотивация. Использование технологий. Создание
+                    комфортной атмосферы.
+                </div>
             </div>
         </div>
         <div class="accordion-item mt-3">
             <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
+                        style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
                     Увлекательные онлайн-уроки
                 </button>
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body" style="color: #333; line-height: 20px; font-size: 18px; font-family: 'Arial Black';">
-                    Курс обучения основам написан понятным языком. В каждом уроке мы не только объясняем теорию, но и даём практические задания, чтобы закрепить материал.
-                    </div>
+                <div class="accordion-body"
+                     style="color: #333; line-height: 20px; font-size: 18px; font-family: 'Arial Black';">
+                    Курс обучения основам написан понятным языком. В каждом уроке мы не только объясняем теорию, но и
+                    даём практические задания, чтобы закрепить материал.
+                </div>
             </div>
         </div>
         <div class="accordion-item mt-3">
             <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"
+                        style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
                     Процесс обучения
                 </button>
             </h2>
@@ -225,12 +252,15 @@
         </div>
         <div class="accordion-item mt-3">
             <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour" style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
-Итоговый документ
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"
+                        style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
+                    Итоговый документ
                 </button>
             </h2>
             <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body" style="color: #333; line-height: 20px; font-size: 18px; font-family: 'Arial Black';">
+                <div class="accordion-body"
+                     style="color: #333; line-height: 20px; font-size: 18px; font-family: 'Arial Black';">
                     Документ об обучении установленного образца
                 </div>
             </div>
@@ -238,116 +268,33 @@
     </div>
 </div>
 
-<div class="container px-4 pt-5 text-center w-100 shadow"
-     style="background-color: rgba(177,250,247,0.2); margin-top: 100px; border-radius: 52px; ">
 
+<div class="container" style="margin-top: 250px;">
+    <div class="row featurette mt-5">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">По успешной подготовке <span class="text-body-secondary">допускаетесь к сдаче Итогового экзамена</span>
+            </h2>
+            <p class="lead">Всего будет 260 вопросов, из которых Вам выпадет 10 случайных</p>
+            <p class="lead">У вас есть 20 минут на ответ</p>
+            <p class="lead">После успешного тестирования выдается документ установленного образца</p>
+        </div>
+        <div class="col-md-5">
+            <img src="prepod.png" style="border-radius: 36px; opacity: .85"
+                 class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                 height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                 preserveaspectratio="xMidYMid slice" focusable="false">
 
-
-    <div class="row g-4 py-5 row-cols-4 row-cols-lg-4">
-        <div class="feature col" style="cursor:pointer; border-radius: 16px; height: 500px;">
-            <div class="shadow p-4 btn btn-outline-dark text-start"
-                 style="height: 400px; width: 100%; background-image: url('web.png'); opacity: .85">
-                <h3 class="fs-4" style="text-align: center; color: #fff;">Вебинары</h3>
-            </div>
-        </div>
-        <div class="feature col " style="cursor:pointer; border-radius: 16px; height: 500px;">
-            <div class="shadow p-4 btn btn-outline-dark text-start"
-                 style="height: 400px; width: 100%; background-image: url('rs.png'); opacity: .85">
-                <h3 class="fs-4" style="text-align: center; color: #fff;">Рабочая спецаильность</h3>
-            </div>
-        </div>
-        <div class="feature col " style="cursor:pointer; border-radius: 16px; height: 500px;">
-            <div class="shadow p-4 btn btn-outline-dark text-start"
-                 style="height: 400px; width: 100%; background-image: url('fire.png'); opacity: .85">
-                <h3 class="fs-4" style="text-align: center; color: #fff;">Пожарная безопасность</h3>
-            </div>
-        </div>
-        <div class="feature col " style="cursor:pointer; border-radius: 16px;">
-            <div class="shadow p-4 btn btn-outline-dark text-start"
-                 style="height: 400px; width: 100%; background-image: url('plus.png'); object-fit: contain; opacity: .85">
-                <h3 class="fs-4" style="text-align: center; color: #fff;">Оказание первой помощи</h3>
-            </div>
         </div>
     </div>
 
-
 </div>
 
-
-<div class="container w-75">
-    <div class="row " style="margin-top: 100px;">
-        <div class="col-sm-6 mb-3 mb-sm-0">
-            <div class="card" style="background-color: #1B1B1B;">
-                <div class="card-body shadow">
-                    <h5 class="card-title" style="color: #9d83fc;">Почему мы?</h5>
-                    <p class="card-text" style="color:#fff;">Стабильаня и опытная компания на рынке</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 mb-3" >
-            <div class="card" style="background-color: #1B1B1B;">
-                <div class="card-body shadow">
-                    <h5 class="card-title" style="color: #9d83fc;">Консультация</h5>
-                    <p class="card-text" style="color:#fff;">Консультация со специалистами - бесплатно</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card" style="background-color: #1B1B1B;">
-                <div class="card-body shadow">
-                    <h5 class="card-title" style="color: #9d83fc;">+7 965 606 75 44</h5>
-                    <p class="card-text" style="color:#fff;">Вопросы по покупке, оплате и содержанию курсов</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card" style="background-color: #1B1B1B;">
-                <div class="card-body shadow">
-                    <h5 class="card-title" style="color: #9d83fc;">Подарок</h5>
-                    <p class="card-text" style="color:#fff;">Промокод на свой перевый курс</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container col-xxl-8 px-4 p-5" style="border-radius: 36px; color:#1B1B1B; margin-top: 100px;">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-        <div class="col-10 col-sm-8 col-lg-6">
-            <img src="red.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="500" loading="lazy">
-        </div>
-        <div class="col-lg-6">
-            <h1 class="display-5 fw-bold lh-1 mb-3" style="">Образовательная деятельность</h1>
-            <div class="row g-4 py-5 row-cols-1 row-cols-lg-2" style="color:#1B1B1B;">
-                <div class="col d-flex align-items-start">
-                    <div class="" style="border-radius: 16px;">
-                        <h3 class="fs-4">Обучение на основе лицензии</h3>
-                    </div>
-                </div>
-                <div class="col d-flex align-items-start">
-                    <div class="" style="border-radius: 16px;">
-                        <h3 class="fs-4">Свободный график</h3>
-                    </div>
-                </div>
-                <div class="col d-flex align-items-start">
-                    <div class="" style="border-radius: 16px;">
-                        <h3 class="fs-4">Документ об обучении установленного образца</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container shadow px-4 my-5 py-5"
-     style="background-color: rgba(186,186,227,0.65); border-radius: 36px; color: #1B1B1B;">
+<div class="container shadow px-4 py-5" id="go" style="background-color: rgba(186,186,227,0.65); border-radius: 36px; color: #1B1B1B; margin-top: 100px;">
     <div class="row align-items-center g-lg-5 py-1">
         <div class="text-container col-lg-7 text-center text-lg-start">
-            <h1 class="display-4 fw-bold lh-1 mb-3" style="font-size: 78px;">Начни учиться
+            <h1 class="display-4 fw-bold lh-1 mb-3" style="text-align:left; font-size: 78px;">Перейти к обучению
                 прямо
-                <span style="color: #fff; text-shadow: 1px 1px 100px #8845f8;">сейчас</span></h1>
+                <span style="color: #fff;float: right; text-shadow: 1px 1px 100px #8845f8;">сейчас</span></h1>
         </div>
         <div class="col-md-10 mx-auto col-lg-5">
             <form class="p-4 p-md-5 rounded-3" style="background-color: rgba(186,186,227,0.01);">
@@ -386,7 +333,8 @@
                 <h5>Меню</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Новости</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Все курсы </a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Все курсы </a>
+                    </li>
                 </ul>
             </div>
 
@@ -395,7 +343,8 @@
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Вход</a></li>
                     <li class="nav-item mb-2"><a href="#"
-                                                 class="nav-link p-0 text-body-secondary">Зарегистрироваться</a></li>
+                                                 class="nav-link p-0 text-body-secondary">Зарегистрироваться</a>
+                    </li>
                 </ul>
             </div>
 
@@ -403,9 +352,11 @@
                 <h5>Об услугах</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Лицензия</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Аккредитация</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Аккредитация</a>
+                    </li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Помощь</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">О платформе</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">О платформе</a>
+                    </li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Контакты</a></li>
                 </ul>
             </div>
@@ -424,9 +375,6 @@
         </div>
     </footer>
 </div>
-
-
-
 
 
 </body>
