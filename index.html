@@ -1,7 +1,432 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Materials</title>
+    <style>
+        #color-text {
+            color: #1B1B1B;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+    </style>
+    <style>
+        .text-container h1{
+            margin: 0;
+            font-size: 150px;
+            color: rgba(225,225,225, .01);
+            background-image: url("https://i.pinimg.com/originals/94/d2/f0/94d2f05d8836d1f2f62910b6a1b018e4.jpg");
+            background-repeat: repeat;
+            -webkit-background-clip:text;
+            animation: animate 15s ease-in-out infinite;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        @keyframes animate {
+            0%, 100% {
+                background-position: left top;
+            }
+            25%{
+                background-position: right bottom;
+            }
+            50% {
+                background-position: left bottom;
+            }
+            75% {
+                background-position: right top;
+            }
+        }
+    </style>
+
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<div class="container">
+    <header
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="../project/index.php" class="nav-link" id="color-text">Новсти</a></li>
+            <li><a href="../project/all.php" class="nav-link" id="color-text">Все курсы </a></li>
+        </ul>
+
+        <div class="col-md-3 text-end">
+            <button type="button" class="btn btn-outline-dark me-2">Войти</button>
+            <button type="button" class="btn btn-dark">Регистрация</button>
+        </div>
+    </header>
+</div>
+
+<!-- <div class="container px-4 py-5 mt-5 border-bottom mb-5 p-5 shadow"
+     style="border-radius: 36px; width: 100%; height: 615px; background-image: url('стройка2.png'); opacity: .85">
+</div> -->
+
+<div class="container px-4 align-items-start w-100" style="" id="featured-3">
+    <h1 class="mb-3 p-3 w-75 display-3 fw-bold"
+        style="color:#333; text-align: left; margin-top: 40px; font-size: 4.6rem; line-height: 4.2rem; font-family: 'Arial Black';">Пройди курс
+        обучения на рабочую профессию с нуля
+    </h1>
+
+</div>
+
+<div class="container shadow" style="margin-top:50px; border-radius:16px;">
+    <div class="row g-4 py-3 row-cols-1 align-items-center row-cols-3">
+        <div class="w-75 mb-1 px-5">
+            <a href="../project/all.php" class="fs-5 btn btn-dark m-1">Все курсы</a>
+            <button type="button" class="fs-5 btn btn-outline-dark m-1">Рабочие специальности</button>
+            <button type="button" class="fs-5 btn btn-outline-dark m-1">Проф. переподготовка</button>
+            <button type="button" class="fs-5 btn btn-outline-dark m-1">Допуски к работе</button>
+            <button type="button" class="fs-5 btn btn-outline-dark m-1">Охрана труда</button>
+            <button type="button" class="fs-5 btn btn-outline-dark m-1">Пром/Электро безопасность</button>
+            <button type="button" class="fs-5 btn btn-outline-dark m-1">БДД</button>
+            <button type="button" class="fs-5 btn btn-outline-dark m-1">ГО и ЧС</button>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container" style="margin-top:50px;">
+    <div class="row g-4 py-5 px-5 mt-3 shadow border row-cols-4 row-cols-lg-3"
+         style="border-radius: 36px; background: linear-gradient(90deg,rgba(255, 221, 179, 1) 0%, rgba(255, 197, 158, 1) 35%, rgba(255, 187, 135, 1) 100%);">
+        <div class="feature col" style="cursor:pointer; border-radius: 16px;">
+            <div class="shadow border p-4 btn btn-outline text-start" style="background-color: #fff; ">
+                <h3 class="fs-5">Маляр</h3>
+                <p>Специалист по нанесению лакокрасочных материалов на различные поверхности</p>
+                <div class="card w-100" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">280 ак. часов</li>
+                        <li class="list-group-item">Видеоуроки</li>
+                        <li class="list-group-item">Итоговый тест</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="feature col" style="cursor:pointer; border-radius: 16px;">
+            <div class="shadow border p-4 btn btn-outline text-start" style="background-color: #fff; ">
+                <h3 class="fs-5">Повар</h3>
+                <p>Специалист по нанесению лакокрасочных материалов на различные поверхности</p>
+                <div class="card w-100" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">280 ак. часов</li>
+                        <li class="list-group-item">Видеоуроки</li>
+                        <li class="list-group-item">Итоговый тест</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="feature col" style="cursor:pointer; border-radius: 16px;">
+            <div class="shadow border p-4 btn btn-outline text-start" style="background-color: #fff; ">
+                <h3 class="fs-5">Работ на высоте</h3>
+                <p>Специалист по нанесению лакокрасочных материалов на различные поверхности</p>
+                <div class="card w-100" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">280 ак. часов</li>
+                        <li class="list-group-item">Видеоуроки</li>
+                        <li class="list-group-item">Итоговый тест</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="feature col" style="cursor:pointer; border-radius: 16px;">
+            <div class="shadow border p-4 btn btn-outline text-start" style="background-color: #fff; ">
+                <h3 class="fs-5">Стропальщик</h3>
+                <p>Специалист по нанесению лакокрасочных материалов на различные поверхности</p>
+                <div class="card w-100" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">280 ак. часов</li>
+                        <li class="list-group-item">Видеоуроки</li>
+                        <li class="list-group-item">Итоговый тест</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="feature col" style="cursor:pointer; border-radius: 16px;">
+            <div class="shadow border p-4 btn btn-outline text-start" style="background-color: #fff; ">
+                <h3 class="fs-5">Монтажник</h3>
+                <p>Специалист по нанесению лакокрасочных материалов на различные поверхности</p>
+                <div class="card w-100" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">280 ак. часов</li>
+                        <li class="list-group-item">Видеоуроки</li>
+                        <li class="list-group-item">Итоговый тест</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="feature col" style="cursor:pointer; border-radius: 16px;">
+            <div class="shadow border p-4 btn btn-outline text-start" style="background-color: #fff; ">
+                <h3 class="fs-5">Проф. "Пожарная безопаснсоть"</h3>
+                <p>Специалист по нанесению лакокрасочных материалов на различные поверхности</p>
+                <div class="card w-100" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">256 ак. часов</li>
+                        <li class="list-group-item">Видеоуроки</li>
+                        <li class="list-group-item">Итоговый тест</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 150px;">
+    <div class="accordion accordion-flush w-50" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h1 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
+                    Индивидуальный подход к каждому ученику
+                </button>
+            </h1>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body" style="color: #333; line-height: 20px; font-size: 18px; font-family: 'Arial Black';">Способность регулировать темп обучения. Адаптация учебного материала. Индивидуальные консультации. Проектная деятельность. Учёт темпа обучения. Поддержка и мотивация. Использование технологий. Создание комфортной атмосферы.</div>
+            </div>
+        </div>
+        <div class="accordion-item mt-3">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
+                    Увлекательные онлайн-уроки
+                </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body" style="color: #333; line-height: 20px; font-size: 18px; font-family: 'Arial Black';">
+                    Курс обучения основам написан понятным языком. В каждом уроке мы не только объясняем теорию, но и даём практические задания, чтобы закрепить материал.
+                    </div>
+            </div>
+        </div>
+        <div class="accordion-item mt-3">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
+                    Процесс обучения
+                </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <pre style="color: #333; line-height: 20px; font-size: 18px; font-family: 'Arial Black';  overflow: hidden;">
+Ознакомьтесь с видеоматериалом
+Выполняете тестовые задания
+Проходите итоговое тестирование
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item mt-3">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour" style="font-size: 36px; background-color: #fff; font-weight: 800; line-height: 28px; color: #333333; border: 0px solid red;">
+Итоговый документ
+                </button>
+            </h2>
+            <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body" style="color: #333; line-height: 20px; font-size: 18px; font-family: 'Arial Black';">
+                    Документ об обучении установленного образца
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container px-4 pt-5 text-center w-100 shadow"
+     style="background-color: rgba(177,250,247,0.2); margin-top: 100px; border-radius: 52px; ">
+
+
+
+    <div class="row g-4 py-5 row-cols-4 row-cols-lg-4">
+        <div class="feature col" style="cursor:pointer; border-radius: 16px; height: 500px;">
+            <div class="shadow p-4 btn btn-outline-dark text-start"
+                 style="height: 400px; width: 100%; background-image: url('web.png'); opacity: .85">
+                <h3 class="fs-4" style="text-align: center; color: #fff;">Вебинары</h3>
+            </div>
+        </div>
+        <div class="feature col " style="cursor:pointer; border-radius: 16px; height: 500px;">
+            <div class="shadow p-4 btn btn-outline-dark text-start"
+                 style="height: 400px; width: 100%; background-image: url('rs.png'); opacity: .85">
+                <h3 class="fs-4" style="text-align: center; color: #fff;">Рабочая спецаильность</h3>
+            </div>
+        </div>
+        <div class="feature col " style="cursor:pointer; border-radius: 16px; height: 500px;">
+            <div class="shadow p-4 btn btn-outline-dark text-start"
+                 style="height: 400px; width: 100%; background-image: url('fire.png'); opacity: .85">
+                <h3 class="fs-4" style="text-align: center; color: #fff;">Пожарная безопасность</h3>
+            </div>
+        </div>
+        <div class="feature col " style="cursor:pointer; border-radius: 16px;">
+            <div class="shadow p-4 btn btn-outline-dark text-start"
+                 style="height: 400px; width: 100%; background-image: url('plus.png'); object-fit: contain; opacity: .85">
+                <h3 class="fs-4" style="text-align: center; color: #fff;">Оказание первой помощи</h3>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="container w-75">
+    <div class="row " style="margin-top: 100px;">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card" style="background-color: #1B1B1B;">
+                <div class="card-body shadow">
+                    <h5 class="card-title" style="color: #9d83fc;">Почему мы?</h5>
+                    <p class="card-text" style="color:#fff;">Стабильаня и опытная компания на рынке</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 mb-3" >
+            <div class="card" style="background-color: #1B1B1B;">
+                <div class="card-body shadow">
+                    <h5 class="card-title" style="color: #9d83fc;">Консультация</h5>
+                    <p class="card-text" style="color:#fff;">Консультация со специалистами - бесплатно</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card" style="background-color: #1B1B1B;">
+                <div class="card-body shadow">
+                    <h5 class="card-title" style="color: #9d83fc;">+7 965 606 75 44</h5>
+                    <p class="card-text" style="color:#fff;">Вопросы по покупке, оплате и содержанию курсов</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card" style="background-color: #1B1B1B;">
+                <div class="card-body shadow">
+                    <h5 class="card-title" style="color: #9d83fc;">Подарок</h5>
+                    <p class="card-text" style="color:#fff;">Промокод на свой перевый курс</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container col-xxl-8 px-4 p-5" style="border-radius: 36px; color:#1B1B1B; margin-top: 100px;">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="red.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3" style="">Образовательная деятельность</h1>
+            <div class="row g-4 py-5 row-cols-1 row-cols-lg-2" style="color:#1B1B1B;">
+                <div class="col d-flex align-items-start">
+                    <div class="" style="border-radius: 16px;">
+                        <h3 class="fs-4">Обучение на основе лицензии</h3>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-start">
+                    <div class="" style="border-radius: 16px;">
+                        <h3 class="fs-4">Свободный график</h3>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-start">
+                    <div class="" style="border-radius: 16px;">
+                        <h3 class="fs-4">Документ об обучении установленного образца</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container shadow px-4 my-5 py-5"
+     style="background-color: rgba(186,186,227,0.65); border-radius: 36px; color: #1B1B1B;">
+    <div class="row align-items-center g-lg-5 py-1">
+        <div class="text-container col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3" style="font-size: 78px;">Начни учиться
+                прямо
+                <span style="color: #fff; text-shadow: 1px 1px 100px #8845f8;">сейчас</span></h1>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+            <form class="p-4 p-md-5 rounded-3" style="background-color: rgba(186,186,227,0.01);">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Ваше имя">
+                    <label for="floatingInput">Ваше имя</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Введите почту</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Придуамйте пароль</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Повторите пароль</label>
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Принимаю пользовательское соглашение
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-dark" type="submit">Перейти к обучению</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="container p-5" style="margin-top: 150px;">
+    <footer class="py-5">
+        <div class="row">
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Меню</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Новости</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Все курсы </a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Личный кабинет</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Вход</a></li>
+                    <li class="nav-item mb-2"><a href="#"
+                                                 class="nav-link p-0 text-body-secondary">Зарегистрироваться</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Об услугах</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Лицензия</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Аккредитация</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Помощь</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">О платформе</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Контакты</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-5 offset-md-1 mb-3">
+                <form>
+                    <h5>Написать на почту</h5>
+                    <p>Укажите Вашу почту</p>
+                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                        <label for="newsletter1" class="visually-hidden">Адрес почты</label>
+                        <input id="newsletter1" type="text" class="form-control w-50" placeholder="Адрес почты">
+                        <button class="btn btn-dark" type="button">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+
+
+
 </body>
-</html>
