@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Materials</title>
+    <style>
+        #color-text {
+            color: #1B1B1B;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="../project/index.php" class="nav-link" id="color-text">Новсти</a></li>
+            <li><a href="../project/all.php" class="nav-link" id="color-text">Все курсы </a></li>
+        </ul>
+
+        <div class="col-md-3 text-end">
+            <button type="button" class="btn btn-outline-dark me-2">Войти</button>
+            <button type="button" class="btn btn-dark">Регистрация</button>
+        </div>
+    </header>
+</div>
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="маляр.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="50%" height="500"
+                 loading="lazy" style="border-radius: 32px;">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3" style="color:#1B1B1B;">Прохождение курса Маляр</h1>
+            <p class="lead">это специалист в строительной отрасли, занимающийся отделкой поверхностей зданий и
+                сооружений</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+                    <div class="col d-flex align-items-start">
+                        <div class="px-3 py-2" style="background-color: #1B1B1B; color:#fff; border-radius: 16px;">
+                            <h3 class="fs-5">Длительность курса </h3>
+                            <p>160 часов</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div class="px-3 py-2" style="background-color: #1B1B1B; color:#fff; border-radius: 16px;">
+                            <h3 class="fs-5">Выдача документа</h3>
+                            <p>по итогам</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div class="px-3 py-2"
+                             style="background-color: rgba(189,245,187,0.75); color:#1B1B1B; border-radius: 16px;">
+                            <h3 class="fs-5">Итоговая цена курса</h3>
+                            <p>4 900 руб.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row featurette mt-5">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading fw-normal lh-1">Курс на образовательной платформе. <span
+                        class="text-body-secondary">Это дистанционное обучение</span></h2>
+            <p class="lead">Форма получения знаний, при которой ученик и учитель находятся на расстоянии и
+                взаимодействуют через цифровые технологии: интернет, видеоуроки, онлайн-платформы.</p>
+            <p class="lead">Материал достаточно полный, охватывает все темы в нужном объеме часов.</p>
+            <p class="lead">Обратная связь с наставником</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img src="ученик.png" style="border-radius: 36px; opacity: .85" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                 width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                 aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+        </div>
+    </div>
+    <div class="row featurette mt-5">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">По успешной подготовке <span
+                        class="text-body-secondary">допускаетесь к сдаче Итогового экзамена</span></h2>
+            <p class="lead">Всего будет 260 вопросов, из которых Вам выпадет 10 случайных</p>
+            <p class="lead">У вас есть 20 минут на ответ</p>
+            <p class="lead">После успешного тестирования выдается документ установленного образца</p>
+        </div>
+        <div class="col-md-5">
+            <img src="препод.png" style="border-radius: 36px; opacity: .85" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                 width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                 aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container shadow px-4 py-5" id="go"
+     style="background-color: rgba(186,186,227,0.65); border-radius: 36px; color: #1B1B1B; margin-top: 100px;">
+    <div class="row align-items-center g-lg-5 py-1">
+        <div class="text-container col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3" style="font-size: 78px;">Перейти к обучению
+                прямо
+                <span style="color: #fff;float: right; text-shadow: 1px 1px 100px #8845f8;">сейчас</span></h1>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+            <form class="p-4 p-md-5 rounded-3" style="background-color: rgba(186,186,227,0.01);">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Ваше имя">
+                    <label for="floatingInput">Ваше имя</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Введите почту</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Придуамйте пароль</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Повторите пароль</label>
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Принимаю пользовательское соглашение
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-dark" type="submit">Перейти к обучению</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="margin-top: 100px;">
+    <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5"
+         style="border-radius: 32px; background-color: rgba(255,200,200,0.39);">
+        <div class="col d-flex flex-column align-items-start gap-2 w-50">
+            <h1 class="fw-bold" style="font-size: 60px; color: #1B1B1B;">Знания, которые Вы приобретёте</h1>
+        </div>
+
+        <div class="col">
+            <div class="row row-cols-1 row-cols-sm-2 g-4">
+                <div class="col d-flex flex-column gap-2">
+                    <p class="p-3 m-1 border shadow" style="border-radius: 16px; background-color: #ffffff;">Способы
+                        выполнения малярных работ под декоративное покрытие</p>
+                </div>
+                <div class="col d-flex flex-column gap-2">
+                    <p class="p-3 m-1 border shadow" style="border-radius: 16px; background-color: #ffffff;">Устройство
+                        и правила эксплуатации окрашивающих агрегатов высокого давления</p>
+                </div>
+                <div class="col d-flex flex-column gap-2">
+                    <p class="p-3 m-1 border shadow" style="border-radius: 16px; background-color: #ffffff;">Способы
+                        копирования и вырезания трафаретов</p>
+                </div>
+                <div class="col d-flex flex-column gap-2">
+                    <p class="p-3 m-1 border shadow" style="border-radius: 16px; background-color: #ffffff;">Способы
+                        подбора окрасочных составов</p>
+                </div>
+                <div class="col d-flex flex-column gap-2">
+                    <p class="p-3 m-1 border shadow" style="border-radius: 16px; background-color: #ffffff;">Способы
+                        покрытия поверхностей под ценные породы дерева и камня</p>
+                </div>
+                <div class="col d-flex flex-column gap-2">
+                    <p class="p-3 m-1 border shadow" style="border-radius: 16px; background-color: #ffffff;">Способы
+                        выполнения малярных работ под декоративное покрытие</p>
+                </div>
+                <div class="col d-flex flex-column gap-2">
+                    <p class="p-3 m-1 border shadow" style="border-radius: 16px; background-color: #ffffff;">
+                        Производственную (по профессии) инструкцию и правила внутреннего трудового распорядка</p>
+                </div>
+                <div class="col d-flex flex-column gap-2">
+                    <p class="p-3 m-1 border shadow" style="border-radius: 16px; background-color: #ffffff;">Инструкции
+                        по охране труда</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5">
+        <div class="col-lg-6 p-5" style="background-color: rgba(173,248,227,0.45); border-radius: 32px; ">
+            <h1 class="display-5 fw-bold lh-1 mb-3 fs-1" style="color:#1B1B1B;">Программа разработана</h1>
+            <p class="lead">с учетом знаний и навыков студентов, окончивших среднюю школу</p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container" style="text-align: center; margin-top: 100px;">
+    <a href="#go" class="btn btn-dark">Перейти к обучению</a>
+</div>
+
+
+
+
+<hr>
+<div class="container p-5" style="margin-top: 150px;">
+    <footer class="py-5">
+        <div class="row">
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Меню</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Новости</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Все курсы </a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Личный кабинет</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Вход</a></li>
+                    <li class="nav-item mb-2"><a href="#"
+                                                 class="nav-link p-0 text-body-secondary">Зарегистрироваться</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Об услугах</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Лицензия</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Аккредитация</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Помощь</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">О платформе</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Контакты</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-5 offset-md-1 mb-3">
+                <form>
+                    <h5>Написать на почту</h5>
+                    <p>Укажите Вашу почту</p>
+                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                        <label for="newsletter1" class="visually-hidden">Адрес почты</label>
+                        <input id="newsletter1" type="text" class="form-control w-50" placeholder="Адрес почты">
+                        <button class="btn btn-dark" type="button">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
