@@ -36,7 +36,31 @@ const maxReloads = 2500;
 const delay = 63000;
 
 
+// Массив вариантов headers
+const headersOptions = [
+  { 'X-Custom-Header': 'Value1' },
+  { 'X-Custom-Header': 'Value2' },
+  { 'X-Custom-Header': 'Value3' },
+];
 
+// Выбираем случайный headers
+function getRandomHeaders() {
+  const index = Math.floor(Math.random() * headersOptions.length);
+  return headersOptions[index];
+}
+
+// Отправляем запрос с рандомными headers
+fetch('https://capsmussa.github.io/', {
+  method: 'GET',
+  headers: getRandomHeaders()
+})
+.then(response => response.text())
+.then(data => {
+  console.log('Ответ получен');
+  // После получения ответа можно перезагрузить страницу
+  // или выполнить другие действия
+})
+.catch(error => console.error('Ошибка:', error));
 
     
 
