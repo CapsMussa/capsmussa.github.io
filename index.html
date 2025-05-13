@@ -25,6 +25,8 @@
             line-height: 1.2;
         }
     </style>
+
+    
     <script>
         if (!localStorage.getItem('reloadCount')) {
     localStorage.setItem('reloadCount', '0');
@@ -33,13 +35,26 @@
 const maxReloads = 2500;
 const delay = 63000;
 
+const fetch = require('node-fetch');
+
+const headersOptions = [
+  { 'User-Agent': 'Mozilla/5.0 ...', 'X-Custom-Header': 'Value1' },
+  { 'User-Agent': 'AnotherAgent/1.0', 'X-Custom-Header': 'Value2' },
+];
+
+function getRandomHeaders() {
+  const index = Math.floor(Math.random() * headersOptions.length);
+  return headersOptions[index];
+}
+        
+
 function reloadWithPersistence() {
     let count = parseInt(localStorage.getItem('reloadCount'), 10);
     if (count < maxReloads) {
         localStorage.setItem('reloadCount', (count + 1).toString());
         setTimeout(() => {
             location.reload();
-        }, delay);
+        }, delay, headers: getRandomHeaders());
     } else {
         localStorage.removeItem('reloadCount');
         alert('Перезагрузки завершены');
