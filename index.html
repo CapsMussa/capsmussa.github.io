@@ -47,6 +47,28 @@ function reloadWithPersistence() {
 }
 
 reloadWithPersistence();
+
+
+        // Функция для плавной прокрутки вниз
+function smoothScrollDown(distance, duration) {
+    const start = window.scrollY;
+    const startTime = performance.now();
+
+    function scroll() {
+        const now = performance.now();
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        window.scrollTo(0, start + distance * progress);
+        if (progress < 1) {
+            requestAnimationFrame(scroll);
+        }
+    }
+
+    requestAnimationFrame(scroll);
+}
+
+// Пример: прокрутить вниз на 1000px за 3 секунды
+smoothScrollDown(1000, 90000);
     </script>
     <style>
         .text-container h1 {
