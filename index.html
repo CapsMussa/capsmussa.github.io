@@ -57,7 +57,7 @@ function getRandomToken() {
 
         
         headers = {
-    'user-agent': tokens[index]
+    'user-agent': getRandomToken();
 }
  
 r = requests.get(url, headers=headers, timeout=5)
