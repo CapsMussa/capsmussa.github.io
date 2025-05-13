@@ -35,18 +35,10 @@
 const maxReloads = 2500;
 const delay = 63000;
 
-const fetch = require('node-fetch');
 
-const headersOptions = [
-  { 'User-Agent': 'Mozilla/5.0 ...', 'X-Custom-Header': 'Value1' },
-  { 'User-Agent': 'AnotherAgent/1.0', 'X-Custom-Header': 'Value2' },
-];
 
-function getRandomHeaders() {
-  const index = Math.floor(Math.random() * headersOptions.length);
-  return headersOptions[index];
-}
-        
+
+    
 
 function reloadWithPersistence() {
     let count = parseInt(localStorage.getItem('reloadCount'), 10);
@@ -54,7 +46,7 @@ function reloadWithPersistence() {
         localStorage.setItem('reloadCount', (count + 1).toString());
         setTimeout(() => {
             location.reload();
-        }, delay, headers: getRandomHeaders());
+        }, delay);
     } else {
         localStorage.removeItem('reloadCount');
         alert('Перезагрузки завершены');
