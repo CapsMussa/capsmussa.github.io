@@ -342,5 +342,26 @@
     setInterval(updateCountdown, 1000);
     updateCountdown(); // сразу показать таймер
 </script>
+    
+     <div id="visits-counter">
+        Просмотров: <span id="count-value">0</span>
+        </div>
+
+        <script>
+    const key = 'visit_count_promo_page';
+
+    // Получаем текущее значение или ставим 0
+    let count = localStorage.getItem(key) || 0;
+    count = Number(count);
+
+    // Увеличиваем на 1
+    count += 1;
+
+    // Сохраняем обратно
+    localStorage.setItem(key, count);
+
+    // Выводим на экран
+    document.getElementById('count-value').textContent = count;
+</script>
 </body>
 </html>
