@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Повысь разряд дистанционно</title>
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --dark: #2B2D42;
+            --light: #F9F9F9;
+            --text: #333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2f3 0%, #ffffff 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            color: var(--dark);
+            margin-bottom: 15px;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        h1 span { color: var(--primary); }
+
+        p.subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        /* Таймер */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px 0 40px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.4s ease forwards;
+        }
+
+        .timer-item {
+            background: var(--dark);
+            color: white;
+            min-width: 70px;
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .timer-item .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .timer-item .label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        /* Преимущества */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(0);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+        }
+
+        .feature-card h3 { margin-bottom: 10px; color: var(--dark); }
+        .feature-card p { color: #555; }
+
+        /* Цены / КП */
+        .pricing {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            margin-bottom: 60px;
+            animation: fadeInUp 1.6s ease forwards;
+        }
+
+        .pricing h2 {
+            text-align: center;
+            color: var(--dark);
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .price-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border: 1px solid #eee;
+            border-radius: 14px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.15);
+        }
+
+        .price-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-weight: 500;
+            font-size: 1rem;
+            margin-right: 8px;
+        }
+
+        .new-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Кнопка */
+        .cta-section {
+            text-align: center;
+            padding-bottom: 60px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn:hover {
+            background: #ff4747;
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .countdown { gap: 12px; }
+            .timer-item { min-width: 60px; padding: 10px 6px; }
+            .pricing, .price-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1 style="font-size: 60px;">Успей повысить свой <br><span>рабочий разряд</span>, дистанционно</h1>
+        <p class="subtitle">Освойте новую квалификацию без отрыва от работы — обучение онлайн, документы по итогам.</p>
+    </header>
+
+    <section class="countdown" id="countdown">
+        <!-- Сюда JS вставит таймер -->
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>Точно по программе</h3>
+            <p>Обучение соответствует требованиям для повышения разряда и включает практику.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Дистанционно</h3>
+            <p>Доступ к материалам 24/7, учитесь в удобное время и в любом месте.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Официальный документ</h3>
+            <p>По окончании — удостоверение установленного образца.</p>
+        </div>
+    </section>
+
+    <!-- Блок коммерческого предложения -->
+    <section class="pricing">
+        <h2>Специальное предложение</h2>
+        <div class="price-grid">
+            <div class="price-card">
+                <h3>Охрана труда (А, Б, В), СИЗ, ОПП</h3>
+                <div style="display:flex;justify-content:center;align-items:center;gap:12px;">
+                    <span class="old-price">2500 ₽</span>
+                    <span class="new-price">1800 ₽</span>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <h3>Высота / ОЗП</h3>
+                <h5>1, 2, 3 группа</h5>
+                <div style="display:flex;justify-content:center;align-items:center;gap:12px;">
+                    <span class="old-price">1800 ₽</span>
+                    <span class="new-price">1200 ₽</span>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <h3>Присвоение рабочей специальности (есть всё!)</h3>
+                <div style="display:flex;justify-content:center;align-items:center;gap:12px;">
+                    <span class="old-price">4000 ₽</span>
+                    <span class="new-price">3000 ₽</span>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <h3>Професиональная переподготовка</h3>
+                <h5>от 256 часов</h5>
+                <div style="display:flex;justify-content:center;align-items:center;gap:12px;">
+                    <span class="old-price">10000 ₽</span>
+                    <span class="new-price">7000 ₽</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <a href="https://max.ru/u/f9LHodD0cOK9MyNI91-hZblkUts65zGN_4OMSwC3EnwiuVom_9Bzd3hJjnk" class="btn"  target="_blank" rel="noopener">Написать в MAX</a>
+    </section>
+
+    <footer>
+        &copy; 2026 Прямой поставщик. Дистанционное обучение рабочим профессиям.
+    </footer>
+</div>
+
+<script>
+    // --- НАСТРОЙКИ ТАЙМЕРА ---
+    // Укажи здесь дату и время дедлайна (формат YYYY-MM-DD HH:mm)
+    const deadline = new Date("2026-08-01 23:59").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = deadline - now;
+
+        if (distance < 0) {
+            document.getElementById('countdown').innerHTML = '<h2 style="color:var(--primary);text-align:center">Акция завершена</h2>';
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown').innerHTML = `
+        <div class="timer-item">
+          <span class="value">${days}</span>
+          <span class="label">дней</span>
+        </div>
+        <div class="timer-item">
+          <span class="value">${hours}</span>
+          <span class="label">ч</span>
+        </div>
+        <div class="timer-item">
+          <span class="value">${minutes}</span>
+          <span class="label">мин</span>
+        </div>
+        <div class="timer-item">
+          <span class="value">${seconds}</span>
+          <span class="label">сек</span>
+        </div>
+      `;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // сразу показать таймер
+</script>
+    
+     <div id="visits-counter">
+        Просмотров: <span id="count-value">0</span>
+        </div>
+
+        <script>
+    const key = 'visit_count_promo_page';
+
+    // Получаем текущее значение или ставим 0
+    let count = localStorage.getItem(key) || 0;
+    count = Number(count);
+
+    // Увеличиваем на 1
+    count += 1;
+
+    // Сохраняем обратно
+    localStorage.setItem(key, count);
+
+    // Выводим на экран
+    document.getElementById('count-value').textContent = count;
+</script>
+</body>
+</html>
