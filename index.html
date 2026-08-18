@@ -1,367 +1,270 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Повысь разряд дистанционно</title>
-    <style>
-        :root {
-            --primary: #FF6B6B;
-            --secondary: #4ECDC4;
-            --dark: #2B2D42;
-            --light: #F9F9F9;
-            --text: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сайт-визитка. Оформление документации и охрана труда</title>
+  <style>
+    :root{
+      --bg: #0c1117;
+      --panel: #1a2230;
+      --text: #e6e9ef;
+      --muted: #a6adbb;
+      --accent: #1f2a37;
+      --accentDark: #0b1a28;
+      --card: #1f2937;
+      --border: #2b3a54;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    a { color: #fff; text-decoration: none; }
+    .container { width: 92%; max-width: 1100px; margin: 0 auto; }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Шапка навигации */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(8,12,18,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: saturate(1.2) blur(2px);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { font-weight: 700; letter-spacing: .5px; font-size: 16px; }
+    .nav-links { display: flex; gap: 20px; list-style: none; padding: 0; margin: 0; }
+    .nav-links a { color: #eaf0f8; opacity: .9; padding: 6px 10px; border-radius: 6px; }
+    .nav-links a:hover { background: rgba(255,255,255,.08); opacity: 1; }
 
-        body {
-            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-            background: linear-gradient(135deg, #eef2f3 0%, #ffffff 100%);
-            color: var(--text);
-            line-height: 1.6;
-        }
+    /* Приветственный блок (hero) */
+    .hero {
+      position: relative;
+      height: 56vh; min-height: 420px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(135deg, #0b1220 0%, #111827 60%, #1f2a37 100%);
+      overflow: hidden;
+    }
+    .hero:before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 20% 10%, rgba(255,255,255,.08), transparent 40%),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,.04), transparent 40%);
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero h1 { font-size: 38px; margin: 0 0 10px; font-weight: 800; letter-spacing: .5px; }
+    .hero p { margin: 0; color: #d6dbe7; font-size: 16px; }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    /* Разделы */
+    .section { padding: 48px 0; opacity: 0; transform: translateY(20px); }
+    .section.in-view { opacity: 1; transform: translateY(0); transition: all 0.6s ease; }
+    h2 { font-size: 28px; margin: 0 0 14px; color: #e6e9f0; }
+    .lead { color: var(--muted); margin-bottom: 18px; }
 
-        header {
-            padding: 40px 0;
-            text-align: center;
-        }
+    /* Прайс – карточки услуг */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+    .card {
+      background: linear-gradient(#1d2630, #111725);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 110px;
+      transform: perspective(800px) rotateX(0) rotateY(0);
+      transition: transform 0.15s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    }
+    .card:hover { transform: rotateX(1deg) rotateY(-6deg); }
+    .card-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .card-title { font-weight: 700; font-size: 16px; color: #f2f4f7; }
+    .card-price { font-weight: 700; font-feature-settings: "tnum" 1; color: #e8f0ff; }
+    .card-desc { color: #cbd5e1; font-size: 14px; margin-top: 6px; }
 
-        h1 {
-            font-size: 2.8rem;
-            line-height: 1.2;
-            color: var(--dark);
-            margin-bottom: 15px;
-            animation: fadeInUp 1s ease forwards;
-        }
+    /* Контент в секциях */
+    .row { display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .col { flex: 1 1 300px; }
 
-        h1 span { color: var(--primary); }
+    /* Контакты и соцсети */
+    .socials { display: flex; gap: 14px; flex-wrap: wrap; }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-radius: 8px;
+      background: #1f2a37; border: 1px solid var(--border);
+      color: #e9eefb;
+    }
+    .social-link svg { width: 20px; height: 20px; fill: currentColor; }
 
-        p.subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            animation: fadeInUp 1.2s ease forwards;
-        }
-
-        /* Таймер */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 50px 0 40px;
-            flex-wrap: wrap;
-            animation: fadeInUp 1.4s ease forwards;
-        }
-
-        .timer-item {
-            background: var(--dark);
-            color: white;
-            min-width: 70px;
-            border-radius: 12px;
-            padding: 12px 8px;
-            text-align: center;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        }
-
-        .timer-item .value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: block;
-        }
-
-        .timer-item .label {
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-
-        /* Преимущества */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(0);
-            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
-        }
-
-        .feature-card h3 { margin-bottom: 10px; color: var(--dark); }
-        .feature-card p { color: #555; }
-
-        /* Цены / КП */
-        .pricing {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-            margin-bottom: 60px;
-            animation: fadeInUp 1.6s ease forwards;
-        }
-
-        .pricing h2 {
-            text-align: center;
-            color: var(--dark);
-            margin-bottom: 30px;
-            font-size: 2rem;
-        }
-
-        .price-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-        }
-
-        .price-card {
-            background: #f9f9f9;
-            padding: 25px;
-            border: 1px solid #eee;
-            border-radius: 14px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .price-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.15);
-        }
-
-        .price-card h3 {
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .old-price {
-            color: #999;
-            text-decoration: line-through;
-            font-weight: 500;
-            font-size: 1rem;
-            margin-right: 8px;
-        }
-
-        .new-price {
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.3rem;
-        }
-
-        .badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--primary);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        /* Кнопка */
-        .cta-section {
-            text-align: center;
-            padding-bottom: 60px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px rgba(255, 107, 107, 0.4);
-        }
-
-        .btn:hover {
-            background: #ff4747;
-            transform: scale(1.03);
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.5);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            color: #888;
-            font-size: 0.95rem;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .countdown { gap: 12px; }
-            .timer-item { min-width: 60px; padding: 10px 6px; }
-            .pricing, .price-card { padding: 20px; }
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <header>
-        <h1 style="font-size: 60px;">Успей повысить свой <br><span>рабочий разряд</span>, дистанционно</h1>
-        <p class="subtitle">Освойте новую квалификацию без отрыва от работы — обучение онлайн, документы по итогам.</p>
-    </header>
-
-    <section class="countdown" id="countdown">
-        <!-- Сюда JS вставит таймер -->
-    </section>
-
-    <section class="features">
-        <div class="feature-card">
-            <h3>Точно по программе</h3>
-            <p>Обучение соответствует требованиям для повышения разряда.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Дистанционно</h3>
-            <p>Доступ к материалам 24/7, учитесь в удобное время и в любом месте.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Официальный документ</h3>
-            <p>По окончании — удостоверение установленного образца.</p>
-        </div>
-    </section>
-
-    <!-- Блок коммерческого предложения -->
-    <section class="pricing">
-        <h2>Специальное предложение</h2>
-        <div class="price-grid">
-            <div class="price-card">
-                <h3>Охрана труда (А, Б, В), СИЗ, ОПП</h3>
-                <div style="display:flex;justify-content:center;align-items:center;gap:12px;">
-                    <span class="old-price">2500 ₽</span>
-                    <span class="new-price">1800 ₽</span>
-                </div>
-            </div>
-
-            <div class="price-card">
-                <h3>Высота / ОЗП</h3>
-                <h5>1, 2, 3 группа</h5>
-                <div style="display:flex;justify-content:center;align-items:center;gap:12px;">
-                    <span class="old-price">1800 ₽</span>
-                    <span class="new-price">1200 ₽</span>
-                </div>
-            </div>
-
-            <div class="price-card">
-                <h3>Присвоение рабочей специальности (есть всё!)</h3>
-                <div style="display:flex;justify-content:center;align-items:center;gap:12px;">
-                    <span class="old-price">4000 ₽</span>
-                    <span class="new-price">3000 ₽</span>
-                </div>
-            </div>
-
-            <div class="price-card">
-                <h3>Професиональная переподготовка</h3>
-                <h5>от 256 часов</h5>
-                <div style="display:flex;justify-content:center;align-items:center;gap:12px;">
-                    <span class="old-price">10000 ₽</span>
-                    <span class="new-price">7000 ₽</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <a href="https://max.ru/u/f9LHodD0cOK9MyNI91-hZblkUts65zGN_4OMSwC3EnwiuVom_9Bzd3hJjnk" class="btn"  target="_blank" rel="noopener">Написать в MAX</a>
-    </section>
-
-    <footer>
-        &copy; 2026 Прямой поставщик. Дистанционное обучение рабочим профессиям.
-    </footer>
-</div>
-
-<script>
-    // --- НАСТРОЙКИ ТАЙМЕРА ---
-    // Укажи здесь дату и время дедлайна (формат YYYY-MM-DD HH:mm)
-    const deadline = new Date("2026-08-31 23:59").getTime();
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = deadline - now;
-
-        if (distance < 0) {
-            document.getElementById('countdown').innerHTML = '<h2 style="color:var(--primary);text-align:center">Акция завершена</h2>';
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById('countdown').innerHTML = `
-        <div class="timer-item">
-          <span class="value">${days}</span>
-          <span class="label">дней</span>
-        </div>
-        <div class="timer-item">
-          <span class="value">${hours}</span>
-          <span class="label">ч</span>
-        </div>
-        <div class="timer-item">
-          <span class="value">${minutes}</span>
-          <span class="label">мин</span>
-        </div>
-        <div class="timer-item">
-          <span class="value">${seconds}</span>
-          <span class="label">сек</span>
-        </div>
-      `;
+    /* Адаптив */
+    @media (max-width: 700px){
+      .hero { height: 62vh; padding: 20px 0; }
+      .nav-inner { flex-wrap: wrap; gap: 8px; }
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown(); // сразу показать таймер
-</script>
-    
-     <div id="visits-counter">
-        Просмотров: <span id="count-value">0</span>
+    /* Минимальные доступности */
+    @media (prefers-reduced-motion: reduce) {
+      .section { transition: none; }
+      .hero:before { display: none; }
+      .card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Главная навигация">
+    <div class="container nav-inner">
+      <div class="brand">Оформление документации и охрана труда</div>
+      <ul class="nav-links" role="navigation" aria-label="Навигация по разделам">
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#pricing">Прайс</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="home" aria-label="Главный раздел">
+    <div class="container hero-content">
+      <h1>Оформление документации для допуска к работам сотрудников</h1>
+      <p>Строгий и лаконичный подход к охране труда, промышленной безопасности и СИЗ</p>
+    </div>
+  </header>
+
+  <section class="section" id="services" aria-label="Описание услуг">
+    <div class="container">
+      <h2>Оформление документации и допуск к работам</h2>
+      <p class="lead">Наша услуга обеспечивает сохранность и соответствие требованиям по охране труда, безопасности и санитарно-эпидемиологическим нормам. Ниже — примеры направлений и цен.</p>
+      <div class="row">
+        <div class="col">
+          <ul class="lead" style="list-style: none; padding: 0;">
+            <li>Охрана труда (А, Б, В) — 1500 руб.</li>
+            <li>СИЗ — 800 руб.</li>
+            <li>Оказание первой помощи — 800 руб.</li>
+            <li>Высота/ОЗП I, II, III группы — 1500 руб.</li>
+            <li>Электро и промышленная безопасность — по запросу</li>
+            <li>Рабочие специальности — 4500 руб.</li>
+            <li>Более 5000 направлений — по запросу</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" aria-label="Прайс услуг">
+    <div class="container">
+      <h2>Прайс услуг (пример)</h2>
+      <p class="lead">Цены выше приведены как ориентир. Реальные платежи зависят от объема и конкретных условий проекта.</p>
+
+      <div class="grid" aria-label="Прайс-лист">
+        <div class="card" role="article">
+          <div class="card-header">
+            <span class="card-title">Охрана труда (А, Б, В)</span>
+            <span class="card-price">1 500 руб.</span>
+          </div>
+          <div class="card-desc">Документация и допуски для сотрудников.</div>
         </div>
 
-        <script>
-    const key = 'visit_count_promo_page';
+        <div class="card" role="article">
+          <div class="card-header">
+            <span class="card-title">СИЗ</span>
+            <span class="card-price">800 руб.</span>
+          </div>
+          <div class="card-desc">Постановка на учёт и выдача средств индивидуальной защиты.</div>
+        </div>
 
-    // Получаем текущее значение или ставим 0
-    let count = localStorage.getItem(key) || 0;
-    count = Number(count);
+        <div class="card" role="article">
+          <div class="card-header">
+            <span class="card-title">Оказание первой помощи</span>
+            <span class="card-price">800 руб.</span>
+          </div>
+          <div class="card-desc">Инструктаж и обеспечение аптечками.</div>
+        </div>
 
-    // Увеличиваем на 1
-    count += 1;
+        <div class="card" role="article">
+          <div class="card-header">
+            <span class="card-title">Высота/ОЗП 1,2,3 группа</span>
+            <span class="card-price">1 500 руб.</span>
+          </div>
+          <div class="card-desc">Документация и обучение по высотным работам.</div>
+        </div>
 
-    // Сохраняем обратно
-    localStorage.setItem(key, count);
+        <div class="card" role="article">
+          <div class="card-header">
+            <span class="card-title">Электро и пром. безопасность</span>
+            <span class="card-price">по запросу</span>
+          </div>
+          <div class="card-desc">Комплексная безопасность и аудит.</div>
+        </div>
 
-    // Выводим на экран
-    document.getElementById('count-value').textContent = count;
-</script>
+        <div class="card" role="article">
+          <div class="card-header">
+            <span class="card-title">Рабочие специальности</span>
+            <span class="card-price">4 500 руб.</span>
+          </div>
+          <div class="card-desc">Соответствие квалификации и допусков.</div>
+        </div>
+
+        <div class="card" role="article">
+          <div class="card-header">
+            <span class="card-title">Более 5000 направлений</span>
+            <span class="card-price">по запросу</span>
+          </div>
+          <div class="card-desc">Индивидуальная подгонка под ваш бизнес.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-label="Контакты">
+    <div class="container">
+      <h2>Связаться</h2>
+      <p class="lead">Связь по соцсетям: Макс</p>
+      <div class="socials" aria-label="Социальные сети Макса">
+        <!-- Замените на реальные ссылки -->
+        <a class="social-link" href="https://vk.com/max" target="_blank" aria-label="VK Макс" rel="noopener">
+          <!-- VK icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.76 2 12.5C2 17.36 5.44 21.28 10.44 22v-7.12H8.9V12h1.54V9.8c0-1.54.92-2.39 2.33-2.39c.72 0 1.48.13 1.48.13v1.63h-.83c-.82 0-1.08.51-1.08 1.03V12h1.84l-.3 2.5h-1.54V22C17.56 21.28 21 17.36 21 12.5C21 6.76 16.52 2 12 2z" fill="currentColor"/></svg>
+          VK Макс
+        </a>
+        <a class="social-link" href="https://t.me/max" target="_blank" aria-label="Telegram Макс" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 15.9l-.3-4.4 9.2-5.8L7.6 3.9 3 9l6.3 2.1 0 0-.2 3.3 0 0 0 0 0 0 0 0 0 0z" fill="currentColor"/></svg>
+          Telegram Макс
+        </a>
+        <a class="social-link" href="https://instagram.com/max" target="_blank" aria-label="Instagram Макс" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.1A2.9 2.9 0 1 0 13.9 12 2.9 2.9 0 0 0 12 9.1zM17.5 6.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill="currentColor"/></svg>
+          Instagram Макс
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="section" aria-label="Футер">
+    <div class="container" style="padding: 24px 0; text-align:center; color:var(--muted);">
+      © Макс, 2026. Все права защищены.
+    </div>
+  </footer>
+
+  <script>
+    // Активация плавного появления секций при скролле
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.section');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      sections.forEach(sec => io.observe(sec));
+
+      // плавный скролл по якорям
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (ev) => {
+          const id = a.getAttribute('href');
+          if (id.length > 1) {
+            ev.preventDefault();
+            document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
