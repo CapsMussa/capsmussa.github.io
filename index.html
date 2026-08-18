@@ -20,23 +20,39 @@
     a { color: #fff; text-decoration: none; }
     .container { width: 92%; max-width: 1100px; margin: 0 auto; }
 
-    /* Шапка навигации */
+    /* Шапка навигации + мобильное меню */
     .nav {
       position: sticky; top: 0; z-index: 100;
       background: rgba(8,12,18,0.95);
       border-bottom: 1px solid var(--border);
       backdrop-filter: saturate(1.2) blur(2px);
     }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; position: relative; }
     .brand { font-weight: 700; letter-spacing: .5px; font-size: 16px; }
+
+    /* Мобильное меню (CSS+small JS-free toggle) */
+    .menu-toggle { display: none; }
+    .hamburger {
+      display: none; width: 40px; height: 28px; padding: 6px; cursor: pointer;
+      justify-content: space-between; flex-direction: column; align-items: center;
+    }
+    .hamburger span { display: block; height: 3px; width: 100%; background: #eaf0f8; border-radius: 2px; }
     .nav-links { display: flex; gap: 20px; list-style: none; padding: 0; margin: 0; }
-    .nav-links a { color: #eaf0f8; opacity: .9; padding: 6px 10px; border-radius: 6px; }
-    .nav-links a:hover { background: rgba(255,255,255,.08); opacity: 1; }
+
+    @media (max-width: 800px) {
+      .hamburger { display: inline-flex; }
+      .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; padding: 8px 12px;
+                   background: rgba(8,12,18,0.98); border-bottom: 1px solid var(--border);
+                   flex-direction: column; gap: 6px; }
+      /* Включение меню при клике на гамбургер */
+      #menu-toggle:checked ~ .nav-links { display: flex; }
+      .nav-inner { padding: 8px 0; }
+    }
 
     /* Приветственный блок (hero) */
     .hero {
       position: relative;
-      height: 56vh; min-height: 420px;
+      height: min(56vh, 520px);
       display: flex; align-items: center; justify-content: center;
       text-align: center;
       color: #fff;
@@ -51,37 +67,37 @@
       mix-blend-mode: overlay;
       pointer-events: none;
     }
-    .hero-content { position: relative; z-index: 1; }
-    .hero h1 { font-size: 38px; margin: 0 0 10px; font-weight: 800; letter-spacing: .5px; }
-    .hero p { margin: 0; color: #d6dbe7; font-size: 16px; }
+    .hero-content { position: relative; z-index: 1; padding: 0 12px; }
+    .hero h1 { font-size: clamp(22px, 6vw + 10px, 40px); margin: 0 0 10px; font-weight: 800; letter-spacing: .5px; }
+    .hero p { margin: 0; color: #d6dbe7; font-size: clamp(12px, 3.5vw, 16px); }
 
     /* Разделы */
-    .section { padding: 48px 0; opacity: 0; transform: translateY(20px); }
+    .section { padding: 40px 0; opacity: 0; transform: translateY(20px); }
     .section.in-view { opacity: 1; transform: translateY(0); transition: all 0.6s ease; }
-    h2 { font-size: 28px; margin: 0 0 14px; color: #e6e9f0; }
-    .lead { color: var(--muted); margin-bottom: 18px; }
+    h2 { font-size: clamp(20px, 4vw, 28px); margin: 0 0 10px; color: #e6e9f0; }
+    .lead { color: var(--muted); margin-bottom: 12px; }
 
     /* Прайс – карточки услуг */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
     .card {
       background: linear-gradient(#1d2630, #111725);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 16px;
+      padding: 14px;
       min-height: 110px;
       transform: perspective(800px) rotateX(0) rotateY(0);
       transition: transform 0.15s ease;
       box-shadow: 0 6px 20px rgba(0,0,0,.25);
     }
     .card:hover { transform: rotateX(1deg) rotateY(-6deg); }
-    .card-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-    .card-title { font-weight: 700; font-size: 16px; color: #f2f4f7; }
-    .card-price { font-weight: 700; font-feature-settings: "tnum" 1; color: #e8f0ff; }
-    .card-desc { color: #cbd5e1; font-size: 14px; margin-top: 6px; }
+    .card-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+    .card-title { font-weight: 700; font-size: clamp(14px, 2.5vw, 16px); color: #f2f4f7; }
+    .card-price { font-weight: 700; font-feature-settings: "tnum" 1; color: #e8f0ff; font-size: clamp(14px, 2.8vw, 18px); }
+    .card-desc { color: #cbd5e1; font-size: 13px; margin-top: 6px; }
 
     /* Контент в секциях */
     .row { display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    .col { flex: 1 1 300px; }
+    .col { flex: 1 1 280px; }
 
     /* Контакты и соцсети */
     .socials { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -93,13 +109,14 @@
     }
     .social-link svg { width: 20px; height: 20px; fill: currentColor; }
 
-    /* Адаптив */
+    /* Адаптивный дизайн для контента */
     @media (max-width: 700px){
-      .hero { height: 62vh; padding: 20px 0; }
-      .nav-inner { flex-wrap: wrap; gap: 8px; }
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 12px; }
+      .card-desc { font-size: 12.5px; }
     }
 
-    /* Минимальные доступности */
+    /* Доп. удобство: плавный вход секций при небольшом скролле */
     @media (prefers-reduced-motion: reduce) {
       .section { transition: none; }
       .hero:before { display: none; }
@@ -111,6 +128,13 @@
   <nav class="nav" aria-label="Главная навигация">
     <div class="container nav-inner">
       <div class="brand">Оформление документации и охрана труда</div>
+
+      <!-- Мобильное меню: чекбокс + гамбургер -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Открыть меню" />
+      <label class="hamburger" for="menu-toggle" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </label>
+
       <ul class="nav-links" role="navigation" aria-label="Навигация по разделам">
         <li><a href="#services">Услуги</a></li>
         <li><a href="#pricing">Прайс</a></li>
@@ -132,7 +156,7 @@
       <p class="lead">Наша услуга обеспечивает сохранность и соответствие требованиям по охране труда, безопасности и санитарно-эпидемиологическим нормам. Ниже — примеры направлений и цен.</p>
       <div class="row">
         <div class="col">
-          <ul class="lead" style="list-style: none; padding: 0;">
+          <ul class="lead" style="list-style: none; padding: 0; margin: 0;">
             <li>Охрана труда (А, Б, В) — 1500 руб.</li>
             <li>СИЗ — 800 руб.</li>
             <li>Оказание первой помощи — 800 руб.</li>
@@ -218,16 +242,15 @@
       <div class="socials" aria-label="Социальные сети Макса">
         <!-- Замените на реальные ссылки -->
         <a class="social-link" href="https://vk.com/max" target="_blank" aria-label="VK Макс" rel="noopener">
-          <!-- VK icon -->
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.76 2 12.5C2 17.36 5.44 21.28 10.44 22v-7.12H8.9V12h1.54V9.8c0-1.54.92-2.39 2.33-2.39c.72 0 1.48.13 1.48.13v1.63h-.83c-.82 0-1.08.51-1.08 1.03V12h1.84l-.3 2.5h-1.54V22C17.56 21.28 21 17.36 21 12.5C21 6.76 16.52 2 12 2z" fill="currentColor"/></svg>
           VK Макс
         </a>
         <a class="social-link" href="https://t.me/max" target="_blank" aria-label="Telegram Макс" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 15.9l-.3-4.4 9.2-5.8L7.6 3.9 3 9l6.3 2.1 0 0-.2 3.3 0 0 0 0 0 0 0 0 0 0z" fill="currentColor"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 15.9l-.3-4.4 9.2-5.8L7.6 3.9 3 9l6.3 2.1 0 0-.2 3.3 0 0 0 0 0 0 0 0z" fill="currentColor"/></svg>
           Telegram Макс
         </a>
         <a class="social-link" href="https://instagram.com/max" target="_blank" aria-label="Instagram Макс" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.1A2.9 2.9 0 1 0 13.9 12 2.9 2.9 0 0 0 12 9.1zM17.5 6.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill="currentColor"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 1 1-5-5h0V7a5 5 0 0 0-5-5H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h0" fill="currentColor"/></svg>
           Instagram Макс
         </a>
       </div>
@@ -241,7 +264,7 @@
   </footer>
 
   <script>
-    // Активация плавного появления секций при скролле
+    // Плавная анимация появления секций
     document.addEventListener('DOMContentLoaded', () => {
       const sections = document.querySelectorAll('.section');
       const io = new IntersectionObserver((entries) => {
@@ -254,7 +277,7 @@
 
       sections.forEach(sec => io.observe(sec));
 
-      // плавный скролл по якорям
+      // Плавный скролл по якорям
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', (ev) => {
           const id = a.getAttribute('href');
