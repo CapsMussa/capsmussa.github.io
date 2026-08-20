@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- SEO: заголовок и описание -->
   <title>CapsDocs — Документация и допуск сотрудников к работам | Оперативность 24/7</title>
-  <meta name="description" content="CapsDocs: документация - допуск сотрудников к работам, охрана труда, высота/ОЗП, промбезопасность, электробезопасность. Оперативность и отправка за наш счёт." />
+  <meta name="description" content="CapsDocs: документация и допуск сотрудников к работам, охрана труда, высота/ОЗП, промбезопасность, электробезопасность. Оперативность и отправка за наш счёт." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://example.com/capsdocs" />
   <meta name="theme-color" content="#D4AF37" />
@@ -114,7 +114,7 @@
         "item": {
           "@type": "Service",
           "name": "Электробезопасность",
-          "description": "Документация и проверка электро-опасностей.",
+          "description": "Документация и проверки по электробезопасности.",
           "provider": { "@type": "Organization", "name": "CapsDocs" },
           "offers": { "@type": "Offer", "price": "2000", "priceCurrency": "RUB" }
         }
@@ -189,17 +189,17 @@
       --border: #2a2a2a;
       --card: #141414;
       --shadow: 0 8px 20px rgba(0,0,0,.4);
+      --brand-grad: linear-gradient(90deg, #E53935 0%, #D4AF37 60%, #E53935 100%);
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); }
     a { color: inherit; text-decoration: none; }
 
-    /* Шапка + моб. меню */
     header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,.95); border-bottom: 1px solid var(--border); }
     .wrap { width: 92%; max-width: 1100px; margin: 0 auto; padding: 12px 0; display: flex; align-items: center; justify-content: space-between; }
     .brand { color: var(--gold); font-weight: 800; font-size: 18px; }
 
-    /* Мобильное меню (CSS + checkbox) */
+    /* Мобильное меню */
     #menu-toggle { display: none; }
     .hamburger { display: none; width: 40px; height: 28px; padding: 6px; cursor: pointer; justify-content: space-between; flex-direction: column; align-items: center; }
     .hamburger span { display: block; height: 3px; width: 100%; background: #fff; border-radius: 2px; }
@@ -211,36 +211,58 @@
       #menu-toggle:checked ~ .nav-links { display: flex; }
     }
 
-    /* Геро секция */
-    .hero { padding: 64px 0 72px; text-align: center; background: linear-gradient(135deg, #000 0%, #0a0a0a 60%, #111 100%); }
+    /* Геро секция — красочно, но строго */
+    .hero {
+      padding: 64px 0 72px;
+      text-align: center;
+      background: linear-gradient(135deg, #000 0%, #111 60%, #1a0e0e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero:before {
+      content: "";
+      position: absolute; inset: -20% -10% auto auto;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(213, 170, 70, .4), transparent 40%),
+                  radial-gradient(circle at 70% 60%, rgba(229, 57, 53, .4), transparent 40%);
+      filter: blur(0.2px);
+      pointer-events: none;
+      border-radius: 50%;
+    }
     .hero h1 { font-size: clamp(28px, 4vw + 12px, 48px); margin: 0 0 8px; font-weight: 900; color: #fff; }
-    .hero p { color: #e9e9e9; margin: 0; }
-    .hero .cta { display: inline-block; margin-top: 16px; padding: 12px 20px; border-radius: 8px; border: none;
-                 background: linear-gradient(90deg, var(--red) 0%, var(--gold) 60%, var(--red) 100%); color: #fff; font-weight: 700; cursor: pointer;
-                 box-shadow: 0 4px 14px rgba(229,57,53,.6); }
+    .hero p { margin: 0; color: #e9e9e9; }
+    .hero .cta {
+      display: inline-block; margin-top: 18px;
+      padding: 12px 20px; border-radius: 8px; border: none;
+      background: var(--brand-grad);
+      color: #fff; font-weight: 800; cursor: pointer;
+      box-shadow: 0 6px 18px rgba(213, 71, 60, .6);
+    }
 
     main { padding: 28px 0 60px; }
     section { padding: 32px 0; }
     h2 { font-size: 28px; margin: 0 0 8px; color: #fff; }
-    .lead { color: var(--muted); margin-bottom: 12px; }
+    .lead { color: #eaeef8; margin-bottom: 12px; }
 
+    /* Карты услуг с SVG-иконками */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; box-shadow: var(--shadow); }
-    .card h3 { margin: 0 0 6px; font-size: 16px; color: #fff; }
+    .card { background: #141414; border: 1px solid var(--border); border-radius: 12px; padding: 14px; box-shadow: var(--shadow); display: flex; gap: 12px; align-items: center; }
+    .card-visual { width: 72px; height: 72px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: #0a0a0a; border:1px solid #2a2a2a; }
+    .card h3 { margin: 0 0 6px; font-size: 16px; }
     .price { font-weight: 800; color: var(--gold); font-size: 18px; }
     .card-desc { color: #cbd5e1; font-size: 13px; margin-top: 6px; }
 
+    /* Контакты */
     .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
-    .box { padding: 14px; background: #111; border-radius: 10px; border: 1px solid var(--border); }
+    .box { padding: 14px; background: #0b0b0b; border-radius: 10px; border: 1px solid var(--border); }
     .socials { display: flex; gap: 12px; flex-wrap: wrap; }
-    .social { display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 8px; background: #1a1a1a; border: 1px solid var(--border); color: #fff; }
 
     form { display: grid; gap: 8px; }
-    input, textarea { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: #0b0b0b; color: #fff; }
+    input, textarea { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: #0a0a0a; color: #fff; }
     button { padding: 12px 14px; border-radius: 6px; border: none; background: var(--gold); color: #000; font-weight: 700; cursor: pointer; }
     button:hover { filter: brightness(1.05); }
 
-    @media (max-width: 800px){
+    @media (max-width: 900px){
       .contact { grid-template-columns: 1fr; }
       .grid { grid-template-columns: 1fr 1fr; }
     }
@@ -251,6 +273,11 @@
 
     .fade { opacity: 0; transform: translateY(12px); transition: all .6s ease; }
     .fade.in { opacity: 1; transform: translateY(0); }
+
+    /* Аккуратное оформление на мобильных: шрифт чуть крупнее для читаемости */
+    @media (max-width: 420px){
+      .brand { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -277,7 +304,7 @@
     <div class="wrap" style="text-align:center;">
       <div>
         <h1>Документация - допуск сотрудников к работам</h1>
-        <p>Оперативность, доступность, готовность 24 часа, отправка за наш счет</p>
+        <p>Оперативность, доступность, готовность 24 часа, отправка за наш счёт</p>
         <a href="#contact" class="cta" aria-label="Связаться">Связаться</a>
       </div>
     </div>
@@ -285,63 +312,160 @@
 
   <main>
     <section id="services" aria-label="Услуги" class="fade">
-      <div class="wrap">
+      <div class="wrap" style="align-items:start;">
         <h2>Услуги и форматы сотрудничества</h2>
-        <p class="lead">Ниже — конкретные предложения CapsDocs.</p>
+        <p class="lead">Ниже — конкретные предложения CapsDocs с прозрачной ценой.</p>
 
-        <div class="grid" id="service-grid">
-          <div class="card">
-            <h3>Охрана труда</h3>
-            <p>Документация и сопроводительные материалы по охране труда.</p>
-            <p class="price">2 000 ₽</p>
+        <div class="grid" id="service-grid" aria-label="Прайс услуг">
+          <!-- 1: Охрана труда -->
+          <div class="card" aria-label="Охрана труда">
+            <div class="card-visual" aria-label="Иконка охрана труда">
+              <!-- svg иконка: щит и отметка -->
+              <svg width="46" height="46" viewBox="0 0 64 64" role="img" aria-label="Иконка охрана труда" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                    <stop stop-color="#E53935" offset="0"/>
+                    <stop stop-color="#D4AF37" offset="1"/>
+                  </linearGradient>
+                </defs>
+                <path d="M32 6l22 12v16c0 11-7 22-22 28C17 56 10 45 10 34V18L32 6z" fill="url(#g1)" stroke="#fff" stroke-width="1.5"/>
+                <path d="M25 28l8 8 14-14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Охрана труда</h3>
+              <p class="card-desc">Документация и сопроводительные материалы по охране труда.</p>
+              <p class="price">2 000 ₽</p>
+            </div>
           </div>
-          <div class="card">
-            <h3>Высота/ОЗП 1,2,3 группа</h3>
-            <p>Документация и обучение по высотным работам.</p>
-            <p class="price">1 500 ₽</p>
+
+          <!-- 2: Высота/ОЗП 1,2,3 группа -->
+          <div class="card" aria-label="Высота и охрана по ОЗП">
+            <div class="card-visual" aria-label="Иконка высоты">
+              <svg width="46" height="46" viewBox="0 0 64 64" role="img" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="g2" x1="0" x2="1" y1="0" y2="1">
+                    <stop stop-color="#D4AF37" offset="0"/>
+                    <stop stop-color="#E53935" offset="1"/>
+                  </linearGradient>
+                </defs>
+                <path d="M32 6l16 12v16l-16 16-16-16V18L32 6z" fill="url(#g2)" stroke="#fff" stroke-width="1.5"/>
+                <path d="M16 28h32" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Высота/ОЗП 1,2,3 группа</h3>
+              <p class="card-desc">Документация и обучение по высотным работам.</p>
+              <p class="price">1 500 ₽</p>
+            </div>
           </div>
-          <div class="card">
-            <h3>Промбезопасность</h3>
-            <p>Комплексная промышленная безопасность и аудит.</p>
-            <p class="price">2 000 ₽</p>
+
+          <!-- 3: Промбезопасность -->
+          <div class="card" aria-label="Промышленная безопасность">
+            <div class="card-visual" aria-label="Иконка безопасности">
+              <svg width="46" height="46" viewBox="0 0 64 64" role="img" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="g3" x1="0" x2="1" y1="0" y2="1">
+                    <stop stop-color="#E53935" offset="0"/>
+                    <stop stop-color="#D4AF37" offset="1"/>
+                  </linearGradient>
+                </defs>
+                <rect x="10" y="14" width="44" height="40" rx="6" fill="url(#g3)" opacity=".95"/>
+                <path d="M20 28h24" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+                <path d="M20 20h24" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div>
+              <h3>Промбезопасность</h3>
+              <p class="card-desc">Комплексная промышленная безопасность и аудит.</p>
+              <p class="price">2 000 ₽</p>
+            </div>
           </div>
-          <div class="card">
-            <h3>Электробезопасность</h3>
-            <p>Документация и проверки по электробезопасности.</p>
-            <p class="price">2 000 ₽</p>
+
+          <!-- 4: Электробезопасность -->
+          <div class="card" aria-label="Электробезопасность">
+            <div class="card-visual" aria-label="Иконка электробезопасности">
+              <svg width="46" height="46" viewBox="0 0 64 64" role="img" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="g4" x1="0" x2="1" y1="0" y2="1">
+                    <stop stop-color="#FF8A00" offset="0"/>
+                    <stop stop-color="#D4AF37" offset="1"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="32" cy="28" r="14" fill="url(#g4)" opacity=".9"/>
+                <path d="M28 34l8-8" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Электробезопасность</h3>
+              <p class="card-desc">Документация и проверки по электробезопасности.</p>
+              <p class="price">2 000 ₽</p>
+            </div>
           </div>
-          <div class="card">
-            <h3>Рабочие специальности</h3>
-            <p>Присвоение или повышение квалификации (более 5000 направлений).</p>
-            <p class="price">5 000 ₽</p>
+
+          <!-- 5: Рабочие специальности -->
+          <div class="card" aria-label="Рабочие специальности">
+            <div class="card-visual" aria-label="Иконка сертификатов">
+              <svg width="46" height="46" viewBox="0 0 64 64" role="img" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="g5" x1="0" x2="1" y1="0" y2="1">
+                    <stop stop-color="#D4AF37" offset="0"/>
+                    <stop stop-color="#E53935" offset="1"/>
+                  </linearGradient>
+                </defs>
+                <rect x="14" y="14" width="36" height="28" rx="6" fill="url(#g5)"/>
+                <path d="M14 44h36" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Рабочие специальности</h3>
+              <p class="card-desc">Присвоение или повышение квалификации (более 5000 направлений).</p>
+              <p class="price">5 000 ₽</p>
+            </div>
           </div>
-          <div class="card">
-            <h3>Консультация</h3>
-            <p>Бесплатно — базовая консультация по требованиям и процессам.</p>
-            <p class="price">Бесплатно</p>
+
+          <!-- 6: Консультация -->
+          <div class="card" aria-label="Консультация">
+            <div class="card-visual" aria-label="Иконка консультации">
+              <svg width="46" height="46" viewBox="0 0 64 64" role="img" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="g6" x1="0" x2="1" y1="0" y2="1">
+                    <stop stop-color="#FFFFFF" offset="0"/>
+                    <stop stop-color="#D4AF37" offset="1"/>
+                  </linearGradient>
+                </defs>
+                <path d="M8 40h40v12H8z" fill="url(#g6)" opacity=".9"/>
+                <path d="M16 22h32M16 30h24" stroke="#000" stroke-width="4" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div>
+              <h3>Консультация</h3>
+              <p class="card-desc">Бесплатно — базовая консультация по требованиям и процессам.</p>
+              <p class="price">Бесплатно</p>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
 
     <section id="pricing" aria-label="Прайс" class="fade">
-      <div class="wrap">
+      <div class="wrap" style="align-items: start;">
         <h2>Прайс (пример)</h2>
         <p class="lead">Цены указаны выше для ориентирования. Реальные договоры — по объему работ.</p>
 
         <div class="grid" aria-label="Прайс-лист">
-          <!-- повторение карточек ниже не обязательно; можно оставить как есть -->
-          <div class="card">
+          <div class="card" aria-label="Starter пакет">
             <h3>Starter</h3>
             <p>1–2 услуги, базовый аудит и консультация</p>
             <p class="price">2 000 ₽</p>
           </div>
-          <div class="card">
+          <div class="card" aria-label="Pro пакет">
             <h3>Pro</h3>
             <p>3–5 услуг, аудит процессов, консультации</p>
             <p class="price">5 000 ₽</p>
           </div>
-          <div class="card">
+          <div class="card" aria-label="Premium пакет">
             <h3>Premium</h3>
             <p>Комплексный пакет: документация, сопровождение 1 мес</p>
             <p class="price">от 12 000 ₽</p>
@@ -352,15 +476,16 @@
 
     <section id="contact" aria-label="Контакты" class="fade">
       <div class="wrap contact">
-        <div class="box">
+        <div class="box" aria-label="Контакты">
           <h2>Связаться</h2>
           <p class="lead">Телефон: <a href="tel:+79656067544" style="color:#fff; text-decoration:underline;">+7 (965) 606-75-44</a></p>
           <p>Почта: <a href="mailto:nzbarec@inbox.ru" style="color:#fff; text-decoration:underline;">nzbarec@inbox.ru</a></p>
           <p>Персональный менеджер: Максим</p>
         </div>
-        <div class="box">
+        <div class="box" aria-label="Соцсети и почта">
           <h2>Сообщения и соцсети</h2>
-          <p>MAX: <a href="https://max.ru/u/f9LHodD0cOKZXCW0KeaA-3oDP8yOFbOYhtQaBPiEORjulULpPQKhLmzpYEg" target="_blank" style="color:#fff;">capsdocs</a></p>
+          <p>VK: <a href="https://vk.com/capsdocs" target="_blank" style="color:#fff;">capsdocs</a></p>
+          <p>Телеграм: <a href="https://t.me/capsdocs" target="_blank" style="color:#fff;">capsdocs</a></p>
           <p>Почта: nzbarec@inbox.ru</p>
         </div>
       </div>
@@ -376,11 +501,8 @@
     document.addEventListener('DOMContentLoaded', () => {
       const sections = document.querySelectorAll('.fade');
       const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) e.target.classList.add('in');
-        });
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
       }, { threshold: 0.15 });
-
       sections.forEach(sec => io.observe(sec));
     });
   </script>
