@@ -3,290 +3,180 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Сайт-визитка. Оформление документации и охрана труда</title>
+  <title>Ваш бизнес без вложений</title>
   <style>
     :root{
-      --bg: #0c1117;
-      --panel: #1a2230;
-      --text: #e6e9ef;
-      --muted: #a6adbb;
-      --accent: #1f2a37;
-      --accentDark: #0b1a28;
-      --card: #1f2937;
-      --border: #2b3a54;
+      --bg: #0b0f14;
+      --panel: #151e29;
+      --text: #e6e9f0;
+      --muted: #96a2b8;
+      --accent: #1e2a37;
+      --border: #2a3a54;
+      --card: #1f2a37;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
-    a { color: #fff; text-decoration: none; }
-    .container { width: 92%; max-width: 1100px; margin: 0 auto; }
+    html, body { margin: 0; padding: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
 
-    /* Шапка навигации + мобильное меню */
-    .nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(8,12,18,0.95);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: saturate(1.2) blur(2px);
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; position: relative; }
-    .brand { font-weight: 700; letter-spacing: .5px; font-size: 16px; }
+    /* Шапка */
+    header { position: sticky; top: 0; z-index: 100; background: rgba(15,23,30,.95); border-bottom: 1px solid var(--border); }
+    .wrap { width: 92%; max-width: 1100px; margin: 0 auto; padding: 12px 0; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-weight: 700; }
 
-    /* Мобильное меню (CSS+small JS-free toggle) */
-    .menu-toggle { display: none; }
-    .hamburger {
-      display: none; width: 40px; height: 28px; padding: 6px; cursor: pointer;
-      justify-content: space-between; flex-direction: column; align-items: center;
-    }
-    .hamburger span { display: block; height: 3px; width: 100%; background: #eaf0f8; border-radius: 2px; }
-    .nav-links { display: flex; gap: 20px; list-style: none; padding: 0; margin: 0; }
+    /* Грид секций */
+    main { padding: 28px 0; }
+    section { margin: 28px 0; }
+    h2 { font-size: 24px; margin: 6px 0 8px; }
+    p.lead { color: var(--muted); margin: 0 0 12px; }
 
-    @media (max-width: 800px) {
-      .hamburger { display: inline-flex; }
-      .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; padding: 8px 12px;
-                   background: rgba(8,12,18,0.98); border-bottom: 1px solid var(--border);
-                   flex-direction: column; gap: 6px; }
-      /* Включение меню при клике на гамбургер */
-      #menu-toggle:checked ~ .nav-links { display: flex; }
-      .nav-inner { padding: 8px 0; }
+    /* Карты услуг */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+    .card { background: #1a2130; border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .card h3 { margin: 0 0 6px; font-size: 16px; }
+    .price { font-weight: 700; color: #eaf2ff; }
+    .card p { margin: 6px 0 0; color: #cbd5e1; font-size: 14px; }
+
+    /* Контакты */
+    .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+    .contact div { padding: 12px; background: #141b27; border: 1px solid var(--border); border-radius: 8px; }
+
+    @media (max-width: 800px){
+      .contact { grid-template-columns: 1fr; }
     }
 
-    /* Приветственный блок (hero) */
-    .hero {
-      position: relative;
-      height: min(56vh, 520px);
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      color: #fff;
-      background: linear-gradient(135deg, #0b1220 0%, #111827 60%, #1f2a37 100%);
-      overflow: hidden;
-    }
-    .hero:before {
-      content: "";
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle at 20% 10%, rgba(255,255,255,.08), transparent 40%),
-                        radial-gradient(circle at 80% 20%, rgba(255,255,255,.04), transparent 40%);
-      mix-blend-mode: overlay;
-      pointer-events: none;
-    }
-    .hero-content { position: relative; z-index: 1; padding: 0 12px; }
-    .hero h1 { font-size: clamp(22px, 6vw + 10px, 40px); margin: 0 0 10px; font-weight: 800; letter-spacing: .5px; }
-    .hero p { margin: 0; color: #d6dbe7; font-size: clamp(12px, 3.5vw, 16px); }
+    /* Форма обратной связи (минимал) */
+    form { display: grid; gap: 8px; }
+    input, textarea { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: #0e1620; color: #fff; }
+    button { padding: 12px 14px; border-radius: 6px; border: none; background: #1f6feb; color: #fff; cursor: pointer; }
+    button:hover { background: #1a5bd6; }
 
-    /* Разделы */
-    .section { padding: 40px 0; opacity: 0; transform: translateY(20px); }
-    .section.in-view { opacity: 1; transform: translateY(0); transition: all 0.6s ease; }
-    h2 { font-size: clamp(20px, 4vw, 28px); margin: 0 0 10px; color: #e6e9f0; }
-    .lead { color: var(--muted); margin-bottom: 12px; }
+    /* Адаптивная типографика */
+    h1 { font-size: clamp(22px, 3.5vw, 40px); margin: 0 0 6px; }
+    .hero { text-align: center; padding: 40px 0 60px; background: linear-gradient(#0b1117, #0c0f14); }
+    .hero p { color: #cbd5e1; margin: 0; }
 
-    /* Прайс – карточки услуг */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
-    .card {
-      background: linear-gradient(#1d2630, #111725);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-      min-height: 110px;
-      transform: perspective(800px) rotateX(0) rotateY(0);
-      transition: transform 0.15s ease;
-      box-shadow: 0 6px 20px rgba(0,0,0,.25);
-    }
-    .card:hover { transform: rotateX(1deg) rotateY(-6deg); }
-    .card-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-    .card-title { font-weight: 700; font-size: clamp(14px, 2.5vw, 16px); color: #f2f4f7; }
-    .card-price { font-weight: 700; font-feature-settings: "tnum" 1; color: #e8f0ff; font-size: clamp(14px, 2.8vw, 18px); }
-    .card-desc { color: #cbd5e1; font-size: 13px; margin-top: 6px; }
-
-    /* Контент в секциях */
-    .row { display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    .col { flex: 1 1 280px; }
-
-    /* Контакты и соцсети */
-    .socials { display: flex; gap: 14px; flex-wrap: wrap; }
-    .social-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 14px; border-radius: 8px;
-      background: #1f2a37; border: 1px solid var(--border);
-      color: #e9eefb;
-    }
-    .social-link svg { width: 20px; height: 20px; fill: currentColor; }
-
-    /* Адаптивный дизайн для контента */
-    @media (max-width: 700px){
-      .grid { grid-template-columns: 1fr; }
-      .card { padding: 12px; }
-      .card-desc { font-size: 12.5px; }
-    }
-
-    /* Доп. удобство: плавный вход секций при небольшом скролле */
-    @media (prefers-reduced-motion: reduce) {
-      .section { transition: none; }
-      .hero:before { display: none; }
-      .card { transition: none; }
-    }
+    /* Простая анимация входа */
+    .fade { opacity: 0; transform: translateY(12px); transition: all 0.5s ease; }
+    .fade.in { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
-  <nav class="nav" aria-label="Главная навигация">
-    <div class="container nav-inner">
-      <div class="brand">Оформление документации и охрана труда</div>
 
-      <!-- Мобильное меню: чекбокс + гамбургер -->
-      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Открыть меню" />
-      <label class="hamburger" for="menu-toggle" aria-label="Открыть меню">
-        <span></span><span></span><span></span>
-      </label>
-
-      <ul class="nav-links" role="navigation" aria-label="Навигация по разделам">
-        <li><a href="#services">Услуги</a></li>
-        <li><a href="#pricing">Прайс</a></li>
-        <li><a href="#contact">Контакты</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <header class="hero" id="home" aria-label="Главный раздел">
-    <div class="container hero-content">
-      <h1>Оформление документации для допуска к работам сотрудников</h1>
-      <p>Строгий и лаконичный подход к охране труда, промышленной безопасности и СИЗ</p>
+  <header>
+    <div class="wrap">
+      <div class="brand">Ваш бренд — без вложений</div>
+      <nav aria-label="Навигация">
+        <a href="#services" style="margin-right:12px;">Услуги</a>
+        <a href="#pricing" style="margin-right:12px;">Прайс</a>
+        <a href="#contact">Контакты</a>
+      </nav>
     </div>
   </header>
 
-  <section class="section" id="services" aria-label="Описание услуг">
-    <div class="container">
-      <h2>Оформление документации и допуск к работам</h2>
-      <p class="lead">Наша услуга обеспечивает сохранность и соответствие требованиям по охране труда, безопасности и санитарно-эпидемиологическим нормам. Ниже — примеры направлений и цен.</p>
-      <div class="row">
-        <div class="col">
-          <ul class="lead" style="list-style: none; padding: 0; margin: 0;">
-            <li>Охрана труда (А, Б, В) — 1500 руб.</li>
-            <li>СИЗ — 800 руб.</li>
-            <li>Оказание первой помощи — 800 руб.</li>
-            <li>Высота/ОЗП I, II, III группы — 1500 руб.</li>
-            <li>Электро и промышленная безопасность — по запросу</li>
-            <li>Рабочие специальности — 4500 руб.</li>
-            <li>Более 5000 направлений — по запросу</li>
-          </ul>
+  <section class="hero" id="home" aria-label="Главный раздел">
+    <div class="wrap">
+      <div>
+        <h1>Бизнес-сайт без вложений</h1>
+        <p>Минималистичный лендинг для старта услуг, онлайн-консалтинга, инфопродуктов или фриланса. Хватит мечтать — начинаем бесплатно.</p>
+        <div style="margin-top:12px;">
+          <a href="#contact" class="button" style="padding:12px 16px; background:#1f6feb; border-radius:6px; color:#fff;">Связаться</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="pricing" aria-label="Прайс услуг">
-    <div class="container">
-      <h2>Прайс услуг (пример)</h2>
-      <p class="lead">Цены выше приведены как ориентир. Реальные платежи зависят от объема и конкретных условий проекта.</p>
+  <main>
+    <section id="services" aria-label="Услуги" class="fade">
+      <div class="wrap">
+        <h2>Услуги и форматы сотрудничества</h2>
+        <p class="lead">Ниже — типичные предложения без вложений. Вы можете адаптировать под себя.</p>
 
-      <div class="grid" aria-label="Прайс-лист">
-        <div class="card" role="article">
-          <div class="card-header">
-            <span class="card-title">Охрана труда (А, Б, В)</span>
-            <span class="card-price">1 500 руб.</span>
+        <div class="grid" id="service-grid">
+          <div class="card">
+            <h3>Фриланс-услуги</h3>
+            <p>Копирайтинг, дизайн, веб-разработка, SEO — оплата за проект или по ретейнеру.</p>
+            <p class="price">от 2 000 ₽</p>
           </div>
-          <div class="card-desc">Документация и допуски для сотрудников.</div>
-        </div>
-
-        <div class="card" role="article">
-          <div class="card-header">
-            <span class="card-title">СИЗ</span>
-            <span class="card-price">800 руб.</span>
+          <div class="card">
+            <h3>Консалтинг</h3>
+            <p>Бизнес-процессы, маркетинг, финансы для малого бизнеса. Дистанционно, без офиса.</p>
+            <p class="price">за сессию 1 500 ₽–3 000 ₽</p>
           </div>
-          <div class="card-desc">Постановка на учёт и выдача средств индивидуальной защиты.</div>
-        </div>
-
-        <div class="card" role="article">
-          <div class="card-header">
-            <span class="card-title">Оказание первой помощи</span>
-            <span class="card-price">800 руб.</span>
+          <div class="card">
+            <h3>Онлайн-курсы и чек-листы</h3>
+            <p>Мини-курсы, шаблоны и инструкции. Продажа через скачивание или доступ по подписке.</p>
+            <p class="price">от 500 ₽</p>
           </div>
-          <div class="card-desc">Инструктаж и обеспечение аптечками.</div>
-        </div>
-
-        <div class="card" role="article">
-          <div class="card-header">
-            <span class="card-title">Высота/ОЗП 1,2,3 группа</span>
-            <span class="card-price">1 500 руб.</span>
+          <div class="card">
+            <h3>Аффилиаты и партнерство</h3>
+            <p>Продвижение партнерских программ и монетизация через комиссию.</p>
+            <p class="price">зависит от партнера</p>
           </div>
-          <div class="card-desc">Документация и обучение по высотным работам.</div>
-        </div>
-
-        <div class="card" role="article">
-          <div class="card-header">
-            <span class="card-title">Электро и пром. безопасность</span>
-            <span class="card-price">по запросу</span>
-          </div>
-          <div class="card-desc">Комплексная безопасность и аудит.</div>
-        </div>
-
-        <div class="card" role="article">
-          <div class="card-header">
-            <span class="card-title">Рабочие специальности</span>
-            <span class="card-price">4 500 руб.</span>
-          </div>
-          <div class="card-desc">Соответствие квалификации и допусков.</div>
-        </div>
-
-        <div class="card" role="article">
-          <div class="card-header">
-            <span class="card-title">Более 5000 направлений</span>
-            <span class="card-price">по запросу</span>
-          </div>
-          <div class="card-desc">Индивидуальная подгонка под ваш бизнес.</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="contact" aria-label="Контакты">
-    <div class="container">
-      <h2>Связаться</h2>
-      <p class="lead">Связь по соцсетям: Макс</p>
-      <div class="socials" aria-label="Социальные сети Макса">
-        <!-- Замените на реальные ссылки -->
-        <a class="social-link" href="https://vk.com/max" target="_blank" aria-label="VK Макс" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.76 2 12.5C2 17.36 5.44 21.28 10.44 22v-7.12H8.9V12h1.54V9.8c0-1.54.92-2.39 2.33-2.39c.72 0 1.48.13 1.48.13v1.63h-.83c-.82 0-1.08.51-1.08 1.03V12h1.84l-.3 2.5h-1.54V22C17.56 21.28 21 17.36 21 12.5C21 6.76 16.52 2 12 2z" fill="currentColor"/></svg>
-          VK Макс
-        </a>
-        <a class="social-link" href="https://t.me/max" target="_blank" aria-label="Telegram Макс" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 15.9l-.3-4.4 9.2-5.8L7.6 3.9 3 9l6.3 2.1 0 0-.2 3.3 0 0 0 0 0 0 0 0z" fill="currentColor"/></svg>
-          Telegram Макс
-        </a>
-        <a class="social-link" href="https://instagram.com/max" target="_blank" aria-label="Instagram Макс" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 1 1-5-5h0V7a5 5 0 0 0-5-5H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h0" fill="currentColor"/></svg>
-          Instagram Макс
-        </a>
+    <section id="pricing" aria-label="Прайс" class="fade">
+      <div class="wrap">
+        <h2>Прайс (пример)</h2>
+        <p class="lead">Гибкие варианты. Вы можете начать с самых простых пакетов.</p>
+
+        <div class="grid" aria-label="Прайс-лист">
+          <div class="card">
+            <h3>Starter</h3>
+            <p>1–2 услуги, базовый аудит и 1 консультация</p>
+            <p class="price">2 000 ₽</p>
+          </div>
+          <div class="card">
+            <h3>Pro</h3>
+            <p>3–5 услуг, аудит процессов, 3 консультации</p>
+            <p class="price">5 000 ₽</p>
+          </div>
+          <div class="card">
+            <h3>Premium</h3>
+            <p>Комплексный пакет: консалтинг, контент, поддержка 1 мес</p>
+            <p class="price">от 12 000 ₽</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="section" aria-label="Футер">
-    <div class="container" style="padding: 24px 0; text-align:center; color:var(--muted);">
-      © Макс, 2026. Все права защищены.
-    </div>
+    <section id="contact" aria-label="Контакты" class="fade">
+      <div class="wrap contact">
+        <div>
+          <h2>Связаться</h2>
+          <p class="lead">Напишите нам: готов обсудить вашу задачу и цену без лишних условий.</p>
+          <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Ваше имя" required />
+            <input type="email" name="email" placeholder="E-mail" required />
+            <textarea name="message" rows="4" placeholder="Сообщение"></textarea>
+            <button type="submit">Отправить сообщение</button>
+          </form>
+        </div>
+        <div>
+          <h2>Контакты</h2>
+          <p>Телефон: +7 999 000-00-00</p>
+          <p>Email: your.email@example.com</p>
+          <p>Сообщества: ваш профиль в VK/Telegram/Instagram</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="text-align:center; padding:20px 0; color:#98a2b8;">
+    © 2026 Ваш бренд. Без вложений — стартуйте уже сегодня.
   </footer>
 
   <script>
-    // Плавная анимация появления секций
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('.section');
+    // Простая анимация появления секций при прокрутке
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.fade');
       const io = new IntersectionObserver((entries) => {
         entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('in-view');
-          }
+          if (e.isIntersecting) e.target.classList.add('in');
         });
       }, { threshold: 0.15 });
-
-      sections.forEach(sec => io.observe(sec));
-
-      // Плавный скролл по якорям
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', (ev) => {
-          const id = a.getAttribute('href');
-          if (id.length > 1) {
-            ev.preventDefault();
-            document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      });
+      sections.forEach(s => io.observe(s));
     });
   </script>
 </body>
