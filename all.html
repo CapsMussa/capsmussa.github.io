@@ -207,4 +207,308 @@
   </header>
 
   <section class="hero" id="home" aria-label="Главный раздел">
-    <div class="wrap" style="text-align:
+    <div class="wrap" style="text-align:center;">
+      <div>
+        <span class="badge" aria-label="Бесплатный инструмент">Бесплатный инструмент</span>
+        <h1>SLI • SLO • SLA — конфигуратор и генератор SLA</h1>
+        <p>Настройте сервисные требования, получите готовый текст SLA и формальные условия — всё под вашу нишу. Инструмент бесплатный.</p>
+        <button class="cta" onclick="document.getElementById('configure').scrollIntoView({behavior:'smooth'})" aria-label="Перейти к конфигуратору">Начать настройку</button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="sla" aria-label="Обоснование SLI/SLO/SLA" class="fade">
+      <div class="wrap" style="align-items:flex-start;">
+        <div style="flex:1;">
+          <h2>SLI, SLO, SLA — что это и зачем</h2>
+          <p class="lead">SLI — измеряемый показатель качества сервиса (например, доступность). SLO — целевой уровень этого показателя. SLA — формальное соглашение об уровне обслуживания, включая условия компенсаций.</p>
+          <ul>
+            <li>SLI: доступность, время отклика, время восстановления, качество обслуживания</li>
+            <li>SLO: целевые 99.9%, отклик <2 часов, решение <24 часов и т.д.</li>
+            <li>SLA: прописанные условия, периоды обслуживания, кредиты/компенсации за недостижения</li>
+          </ul>
+        </div>
+        <div class="card" style="flex:0 0 320px;">
+          <div class="card-visual" aria-label="Иконка SLA" style="margin:0 0 8px;">
+            <svg width="48" height="48" viewBox="0 0 64 64" role="img" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="grad" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#D4AF37"/><stop stop-color="#E53935"/></linearGradient></defs>
+              <path d="M6 12h52v40H6z" fill="url(#grad)" opacity=".95" stroke="#fff" stroke-width="1.5"/>
+              <path d="M16 28h32" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+              <path d="M16 40h20" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <strong>Бесплатный инструмент</strong>
+          <p class="card-desc" style="margin-top:6px;">Настроить SLI/SLO/SLA за минуту и получить текст SLA в одном шаге.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="configure" aria-label="Конфигуратор SLI/SLO/SLA" class="fade">
+      <div class="wrap" style="align-items: start;">
+        <div style="flex:1;">
+          <h2>Конфигуратор SLI / SLO / SLA</h2>
+          <p class="lead">Настройте целевые значения и фактические параметры, чтобы получить готовый SLA и расчёты кредитов за downtime.</p>
+
+          <div class="grid" style="margin-top:8px;">
+            <!-- SLI: Цель доступности -->
+            <div class="card" aria-label="SI-Цель доступности">
+              <div class="card-visual" aria-label="Иконка доступности">
+                <svg width="46" height="46" viewBox="0 0 64 64" role="img" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="32" r="14" fill="#D4AF37" opacity=".95" />
+                  <path d="M16 32h32" stroke="#000" stroke-width="4" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div>
+                <h3>SLI: Цель доступности (%)</h3>
+                <label for="sliTarget" style="font-size:12px; color:#ddd;">Целевой уровень доступности</label>
+                <input id="sliTarget" type="range" min="90" max="99.999" step="0.01" value="99.9" oninput="updateSLI()" aria-label="Целевая доступность">
+                <div>Текущая цель: <strong id="sliTargetVal">99.90%</strong></div>
+              </div>
+            </div>
+
+            <!-- SLO: время отклика и устранения -->
+            <div class="card" aria-label="SLO: параметры отклика/устранения">
+              <div class="card-visual" aria-label="Иконка времени">
+                <svg width="46" height="46" viewBox="0 0 64 64" role="img" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="32" r="14" fill="#E53935" opacity=".95"/>
+                  <path d="M32 20v12l8 4" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+                </svg>
+              </div>
+              <div>
+                <h3>SLO: Время отклика и время устранения</h3>
+                <label for="sloResponse" style="font-size:12px; color:#ddd;">Время отклика (часы)</label>
+                <input id="sloResponse" type="range" min="0.25" max="24" step="0.25" value="2" oninput="updateSLO()" aria-label="Время отклика">
+                <div>Отклик: <strong id="sloResponseVal">2 ч</strong></div>
+
+                <label for="sloResolution" style="font-size:12px; color:#ddd;">Время устранения (часы)</label>
+                <input id="sloResolution" type="range" min="0.5" max="168" step="0.5" value="24" oninput="updateSLO()" aria-label="Время устранения">
+                <div>Устранение: <strong id="sloResolutionVal">24 ч</strong></div>
+              </div>
+            </div>
+
+            <!-- SLA: условия, кредиты -->
+            <div class="card" aria-label="SLA: условия и кредиты">
+              <div class="card-visual" aria-label="Иконка SLA">
+                <svg width="46" height="46" viewBox="0 0 64 64" role="img" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="10" y="14" width="44" height="34" rx="6" fill="#D4AF37" opacity=".95"/>
+                  <path d="M12 32h40" stroke="#000" stroke-width="4" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div>
+                <h3>SLA: Условия и кредиты</h3>
+                <label for="monthlyFee" style="font-size:12px; color:#ddd;">Ежемесячная оплата (руб.)</label>
+                <input id="monthlyFee" type="number" min="0" step="100" value="0" aria-label="Ежемесячная оплата">
+
+                <label style="margin-top:8px; font-size:12px; color:#ddd;">Периоды обслуживания (для примера)</label>
+                <div style="display:flex; gap:8px; align-items:center;">
+                  <input id="maintenanceToggle" type="checkbox" checked aria-label="Плановое обслуживание">
+                  <span>Плановые окна обслуживания по умолчанию</span>
+                </div>
+
+                <div style="margin-top:8px; font-size:14px;">
+                  Рассчитанные кредиты: <strong id="creditsPct">0%</strong> от месячного платежа
+                </div>
+
+                <button style="margin-top:8px;" onclick="generateSLA()" aria-label="Сгенерировать SLA текст">Сгенерировать SLA</button>
+
+                <div style="margin-top:12px;">
+                  <strong>Пример SLA-текста:</strong>
+                  <pre id="slaText" class="sla-text" aria-label="Сгенерированный текст SLA" style="white-space:pre-wrap;"></pre>
+                  <button onclick="copySLAText()" aria-label="Скопировать текст SLA">Скопировать текст SLA</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Превью итогового SLA и быстрый экспорт -->
+      </div>
+    </section>
+
+    <section id="contact" aria-label="Контакты" class="fade">
+      <div class="wrap contact">
+        <div class="box" aria-label="Форма заказа консультации">
+          <h2>Заказать консультацию</h2>
+          <p class="lead">Заполните форму — свяжемся в ближайшее время.</p>
+          <form id="contactForm" onsubmit="return submitContactForm(event)">
+            <div style="display:flex; gap:8px;">
+              <div style="flex:1;">
+                <label for="name">Имя</label>
+                <input id="name" name="name" type="text" required placeholder="Ваше имя" />
+              </div>
+              <div style="flex:1;">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required placeholder="email@example.com" />
+              </div>
+            </div>
+            <div>
+              <label for="company">Компания</label>
+              <input id="company" name="company" type="text" placeholder="Название компании (не обязательно)" />
+            </div>
+            <div>
+              <label for="service">Хочу услугу</label>
+              <select id="service" name="service" aria-label="Выбор услуги">
+                <option value="Консультация">Консультация</option>
+                <option value="SLI">SLI — цель доступности</option>
+                <option value="SLO">SLO — параметры времени отклика/устранения</option>
+                <option value="SLA">SLA — условия и кредиты</option>
+                <option value="Другие вопросы">Другие вопросы</option>
+              </select>
+            </div>
+            <div>
+              <label for="message">Сообщение</label>
+              <textarea id="message" name="message" rows="4" placeholder="Опишите задачу, требования, бюджет..."></textarea>
+            </div>
+            <button type="submit" aria-label="Отправить заявку">Отправить заявку</button>
+          </form>
+          <div id="formStatus" role="status" aria-live="polite" style="margin-top:8px; color:#9aff9a;"></div>
+        </div>
+
+        <div class="box" aria-label="Контакты">
+          <h2>Контакты</h2>
+          <p>Телефон: <a href="tel:+79656067544" style="color:#fff; text-decoration:underline;">+7 (965) 606-75-44</a></p>
+          <p>Почта: <a href="mailto:nzbarec@inbox.ru" style="color:#fff; text-decoration:underline;">nzbarec@inbox.ru</a></p>
+          <p>Персональный менеджер: Максим</p>
+          <div class="socials" aria-label="Социальные сети">
+            <a class="social" href="https://vk.com/capsdocs" target="_blank" aria-label="VK CapsDocs">VK</a>
+            <a class="social" href="https://t.me/capsdocs" target="_blank" aria-label="Телеграм CapsDocs">Telegram</a>
+            <a class="social" href="mailto:nzbarec@inbox.ru" aria-label="Почта CapsDocs">Почта</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="text-align:center; padding: 20px 0; color:#d9d9d9;">
+    © 2026 CapsDocs. Бесплатный инструмент SLI/SLO/SLA — применяйте на практике.
+  </footer>
+
+  <script>
+    // Простейшая логика обновления значений SLI/SLO
+    function updateSLI(){
+      const v = parseFloat(document.getElementById('sliTarget').value);
+      document.getElementById('sliTargetVal').textContent = v.toFixed(2) + "%";
+      updateSLACreditPreview();
+    }
+    function updateSLO(){
+      const r = parseFloat(document.getElementById('sloResponse').value);
+      const res = parseFloat(document.getElementById('sloResolution').value);
+      document.getElementById('sloResponseVal').textContent = r.toFixed(2) + " ч";
+      document.getElementById('sloResolutionVal').textContent = res.toFixed(2) + " ч";
+      updateSLACreditPreview();
+    }
+
+    // Вычисление кредита за downtime: простая пропорционная формула
+    function updateSLACreditPreview(){
+      const target = parseFloat(document.getElementById('sliTarget').value);
+      const actual = parseFloat(document.getElementById('sliTarget').value) // по умолчанию считаем без downtime
+      // Реалистичнее: добавить отдельный ползунок для фактической доступности
+      // Для простоты используем демонстрационную логику: если фактическая ниже цели, кредиты растут.
+      const monthly = parseFloat(document.getElementById('monthlyFee').value || 0);
+      // простая демонстрация: разница между целевой и фактической (если фактическая ниже)
+      const actualFallback = actual;
+      let downtimeDiff = Math.max(0, target - actualFallback);
+      // ограничим кредиты 0-25%
+      let credits = Math.min(25, downtimeDiff);
+      document.getElementById('creditsPct').textContent = credits.toFixed(2) + "%";
+      // чтобы показать изменение в тексте SLA, можно обновлять автоматически
+    }
+
+    // Генератор SLA-текста
+    function generateSLA(){
+      const target = parseFloat(document.getElementById('sliTarget').value);
+      const resp = parseFloat(document.getElementById('sloResponse').value);
+      const resolv = parseFloat(document.getElementById('sloResolution').value);
+      const monthly = parseFloat(document.getElementById('monthlyFee').value || 0);
+      const maintenance = document.getElementById('maintenanceToggle').checked ? "Да" : "Нет";
+
+      const credits = document.getElementById('creditsPct').textContent;
+
+      const text = [
+        "SLA CapsDocs — текст примера",
+        "",
+        "1. Уровни обслуживания (SLA)",
+        "- Uptime (SLI): целевой уровень доступности: " + target.toFixed(2) + "% (SLI).",
+        "- Время отклика (SLO): " + resp.toFixed(2) + " часов.",
+        "- Время устранения (SLO): " + resolv.toFixed(2) + " часов.",
+        "",
+        "2. Условия обслуживания",
+        maintenance === "Да" ? "- Плановые окна обслуживания: согласование." : "- Без запланированных простоев.",
+        "",
+        "3. Компенсации (кредиты)",
+        "В случае несоблюдения целевых уровней начисляются кредиты в размере " + credits + " от месячного платежа.",
+        "Пример расчета: ежемесячный платеж = " + (monthly || 0) + " ₽, кредит = " + credits + " от суммы.",
+        "",
+        "4. Прочие условия",
+        "Уточняйте детали и ответственность сторон в отдельном договоре."
+      ].join("\n");
+
+      document.getElementById('slaText').textContent = text;
+    }
+
+    // Копирование SLA
+    function copySLAText(){
+      const el = document.getElementById('slaText');
+      if (!el) return;
+      const text = el.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('SLA текст скопирован в буфер обмена');
+      }).catch(() => {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('SLA текст скопирован (fallback)');
+      });
+    }
+
+    // Контактная форма: простая валидация и имитация отправки
+    function submitContactForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
+      const status = document.getElementById('formStatus');
+
+      if(!name || !email){
+        status.style.color = '#ff8787';
+        status.textContent = 'Пожалуйста, заполните имя и email.';
+        return false;
+      }
+
+      // Эмуляция отправки (без реального сервера)
+      status.style.color = '#9aff9a';
+      status.textContent = 'Спасибо! Ваша заявка принята. Мы свяжемся в ближайшее время.';
+      document.getElementById('contactForm').reset();
+      // очистить SLA текст, если нужно
+      return false;
+    }
+
+    // Инициализация: значения по умолчанию и подписки
+    document.addEventListener('DOMContentLoaded', () => {
+      updateSLI();
+      updateSLO();
+      generateSLA();
+      // плавная анимация секций
+      const sections = document.querySelectorAll('.fade');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+      }, { threshold: 0.15 });
+      sections.forEach(sec => io.observe(sec));
+    });
+
+    // Простая плавная прокрутка при клике по якорям
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+  </script>
+</body>
+</html>
