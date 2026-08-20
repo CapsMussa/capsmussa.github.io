@@ -1,159 +1,210 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>Materials</title>
-    <style>
-        #color-text {
-            color: #1B1B1B;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 1.2;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CapsDocs — Бесплатный инструмент SLI/SLO/SLA</title>
+  <meta name="description" content="Бесплатный онлайн-инструмент CapsDocs для настройки SLI, SLO и SLA. Генерация SLA, шаги по улучшению сервиса и формы контактов." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://example.com/capsdocs-sla-tool" />
+
+  <!-- Open Graph / соцсети -->
+  <meta property="og:title" content="CapsDocs — Бесплатный инструмент SLI/SLO/SLA" />
+  <meta property="og:description" content="Настройте SLI, SLO и SLA быстро. Генератор SLA и бесплатный инструмент на вашем сайте." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/capsdocs-sla-tool" />
+  <meta property="og:image" content="https://example.com/capsdocs-sla-tool/og-image.jpg" />
+  <meta property="og:site_name" content="CapsDocs" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CapsDocs — Бесплатный инструмент SLI/SLO/SLA" />
+  <meta name="twitter:description" content="Генератор SLA и конфигуратор SLI/SLO бесплатно." />
+  <meta name="twitter:image" content="https://example.com/capsdocs-sla-tool/og-image.jpg" />
+
+  <!-- Структурированные данные -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CapsDocs",
+    "url": "https://example.com/capsdocs-sla-tool",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://example.com/capsdocs-sla-tool/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CapsDocs",
+    "url": "https://example.com/capsdocs-sla-tool",
+    "logo": "https://example.com/capsdocs-sla-tool/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+7-965-606-7544",
+      "contactType": "customer service",
+      "areaServed": "RU"
+    },
+    "sameAs": [
+      "https://vk.com/capsdocs",
+      "https://t.me/capsdocs",
+      "https://instagram.com/capsdocs"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Что такое SLI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SLI (Service Level Indicator) — измеряемый показатель качества сервиса, например доступность."
         }
-    </style>
+      },
+      {
+        "@type": "Question",
+        "name": "Что такое SLO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SLO (Service Level Objective) — целевой уровень по конкретному показателю (например доступности 99.9%)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Что такое SLA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SLA (Service Level Agreement) — договор, в котором зафиксированы цели по SLA/SLO, условия обслуживания и компенсации за недостижение уровней."
+        }
+      }
+    ]
+  }
+  </script>
 
-    <!-- Yandex.RTB -->
-<script>window.yaContextCb=window.yaContextCb||[]</script>
-<script src="https://yandex.ru/ads/system/context.js" async></script>
+  <style>
+    :root{
+      --bg: #000;
+      --card: #141414;
+      --surface: #1a1a1a;
+      --text: #fff;
+      --muted: #d9d9d9;
+      --gold: #D4AF37;
+      --red: #E53935;
+      --border: #2a2a2a;
+      --shadow: 0 8px 20px rgba(0,0,0,.4);
+      --brand-grad: linear-gradient(90deg, #E53935 0%, #D4AF37 60%, #E53935 100%);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
 
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,.95); border-bottom: 1px solid var(--border); }
+    .wrap { width: 92%; max-width: 1100px; margin: 0 auto; padding: 12px 0; display: flex; align-items: center; justify-content: space-between; }
+
+    .brand { color: var(--gold); font-weight: 800; letter-spacing: .5px; font-size: 18px; }
+
+    /* Мобильное меню */
+    #menu-toggle { display: none; }
+    .hamburger { display: none; width: 40px; height: 28px; padding: 6px; cursor: pointer; justify-content: space-between; flex-direction: column; align-items: center; }
+    .hamburger span { display: block; height: 3px; width: 100%; background: #fff; border-radius: 2px; }
+    .nav { display: flex; gap: 12px; align-items: center; }
+
+    @media (max-width: 900px){
+      .hamburger { display: inline-flex; }
+      .nav { display: none; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; padding: 8px 12px; background: rgba(0,0,0,.95); border-bottom: 1px solid var(--border); }
+      #menu-toggle:checked ~ .nav { display: flex; }
+    }
+
+    /* Геро секция */
+    .hero {
+      padding: 60px 0 40px;
+      text-align: center;
+      background: linear-gradient(135deg, #000 0%, #111 60%, #1a0a0a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; right:-60px; top:-60px;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(213,170,70,.4), transparent 40%);
+      filter: blur(0.5px);
+    }
+    .hero h1 { font-size: clamp(28px, 4vw + 12px, 48px); margin: 0 0 8px; font-weight: 900; color:#fff; }
+    .hero p { margin: 0; color: #e9e9e9; }
+    .hero .cta { display: inline-block; margin-top: 16px; padding: 12px 20px; border-radius: 8px; border: none;
+                 background: var(--brand-grad); color: #000; font-weight: 800; cursor: pointer; }
+    .badge { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:#1a1a1a; color:#fff; border:1px solid var(--border); font-weight:600; }
+
+    main { padding: 28px 0 60px; }
+
+    section { padding: 40px 0; }
+    h2 { font-size: 28px; margin: 0 0 8px; color: #fff; }
+    .lead { color: var(--muted); margin-bottom: 12px; }
+
+    /* Карточки услуг с SVG-иконками */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+    .card { display:flex; gap:12px; align-items: center;
+            background: #141414; border:1px solid var(--border); border-radius:12px; padding:14px; box-shadow: var(--shadow); }
+    .card-visual { width: 64px; height: 64px; display:flex; align-items:center; justify-content:center; border-radius:8px; background:#0a0a0a; border:1px solid #2a2a2a; }
+    .card h3 { margin:0 0 6px; font-size:16px; }
+    .price { font-weight:800; color: var(--gold); font-size:18px; }
+    .card-desc { color:#cbd5e1; font-size:13px; }
+
+    /* Контакты и форма */
+    .contact { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; }
+    .box { padding:14px; background:#0f0f0f; border-radius:10px; border:1px solid var(--border); }
+    .socials { display:flex; gap:12px; flex-wrap:wrap; }
+
+    form { display: grid; gap:8px; }
+    input, textarea, select { width:100%; padding:10px; border-radius:6px; border:1px solid var(--border); background:#0a0a0a; color:#fff; }
+    label { font-size: 12px; color: #ddd; }
+    button { padding:12px 14px; border-radius:6px; border:none; background: var(--gold); color:#000; font-weight:700; cursor:pointer; }
+    button:hover { filter: brightness(1.05); }
+
+    @media (max-width: 900px){
+      .contact { grid-template-columns:1fr; }
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 520px){
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .fade { opacity: 0; transform: translateY(12px); transition: all .6s ease; }
+    .fade.in { opacity: 1; transform: translateY(0); }
+
+    /* Лейаут для простого экспорта / копирования */
+    pre.sla-text { white-space: pre-wrap; background:#0b0b0b; padding:12px; border-radius:8px; border:1px solid var(--border); color:#e6e6e6; }
+  </style>
 </head>
 <body>
-    <!-- Yandex.RTB R-A-15435152-1 -->
-<script>
-window.yaContextCb.push(() => {
-    Ya.Context.AdvManager.render({
-        "blockId": "R-A-15435152-1",
-        "type": "fullscreen",
-        "platform": "desktop"
-    })
-})
-</script>
-<div class="container">
-    <header
-            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="/" class="nav-link" id="color-text">Новсти</a></li>
-            <li><a href="all.html" class="nav-link" id="color-text">Все курсы </a></li>
-        </ul>
+  <header>
+    <div class="wrap">
+      <div class="brand" aria-label="CapsDocs бренд">CapsDocs</div>
 
-        <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-dark me-2">Войти</button>
-            <button type="button" class="btn btn-dark">Регистрация</button>
-        </div>
-    </header>
-</div>
+      <input type="checkbox" id="menu-toggle" />
+      <label class="hamburger" for="menu-toggle" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </label>
 
-
-<div class="container px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-        <div class="col-10 col-sm-8 col-lg-6">
-        </div>
-        <div class="col-lg-6">
-            <h1 class="display-5 fw-bold lh-1 mb-3" style="color: #1B1B1B;">Выбери свой курс и освой новый навык</h1>
-            <div class="mb-3">
-                <input type="text" style="border: 1px solid #1B1B1B;" class="form-control w-50 mt-5"
-                       id="formGroupExampleInput" placeholder="Найти курс">
-            </div>
-        </div>
+      <nav class="nav" aria-label="Главная навигация">
+        <a href="#sla">SLI / SLO / SLA</a>
+        <a href="#configure" style="margin-left:8px;">Конфигуратор</a>
+        <a href="#contact" style="margin-left:8px;">Контакты</a>
+      </nav>
     </div>
+  </header>
 
-
-    <div class="row row-cols-1 row-cols-lg-2">
-        <div class="feature col" style="width: 350px;">
-            <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <a href="all.html" class="btn btn-dark mb-1" style="width: fit-content;">Все курсы</a>
-                    <a href="#" class="btn btn-outline-dark mb-1" style="width: fit-content;">Рабочие специальности</a>
-                    <a href="#" class="btn btn-outline-dark mb-1"
-                       style="width: fit-content;">Пром/Электробезопасность</a>
-                    <a href="#" class="btn btn-outline-dark mb-1" style="width: fit-content;">Пожарная безопасность</a>
-                </ul>
-            </div>
-
-        </div>
-        <div class="feature col">
-            <h1 class="fs-2" style="color: #1B1B1B;">Вся база знаний (1)</h1>
-            <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-
-                <div class="feature col " style="cursor:pointer; height: 220px;">
-                    <a href="malyar.html" class="shadow w-100 p-4 btn btn-outline-dark text-start"
-                        style="height: 205px; border-radius: 16px;">
-                        <h3 class="fs-6">Маляр</h3>
-                        <p style="font-size: 14px;">Специалист по нанесению лакокрасочных материалов на различные поверхности</p>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="container" style="text-align: center;">
-        <button class="btn btn-outline-dark fs-5">Еще 10 курсов
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-right"
-                 viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-            </svg>
-        </button>
-    </div>
-</div>
-<hr>
-<div class="container p-5" style="margin-top: 150px;">
-    <footer class="py-5">
-        <div class="row">
-            <div class="col-6 col-md-2 mb-3">
-                <h5>Меню</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Новости</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Все курсы </a></li>
-                </ul>
-            </div>
-
-            <div class="col-6 col-md-2 mb-3">
-                <h5>Личный кабинет</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Вход</a></li>
-                    <li class="nav-item mb-2"><a href="#"
-                                                 class="nav-link p-0 text-body-secondary">Зарегистрироваться</a></li>
-                </ul>
-            </div>
-
-            <div class="col-6 col-md-2 mb-3">
-                <h5>Об услугах</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Лицензия</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Аккредитация</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Помощь</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">О платформе</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Контакты</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-5 offset-md-1 mb-3">
-                <form>
-                    <h5>Написать на почту</h5>
-                    <p>Укажите Вашу почту</p>
-                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                        <label for="newsletter1" class="visually-hidden">Адрес почты</label>
-                        <input id="newsletter1" type="text" class="form-control w-50" placeholder="Адрес почты">
-                        <button class="btn btn-dark" type="button">Отправить</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </footer>
-</div>
-
-
-</body>
-</html>
+  <section class="hero" id="home" aria-label="Главный раздел">
+    <div class="wrap" style="text-align:
